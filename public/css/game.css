@@ -1,0 +1,147 @@
+.startGame{
+    padding: 64px;
+}
+
+.characterConfirm{
+    border-radius: 16px;
+    background-color: #2B6069;
+    color: #fff;
+    padding: 16px;
+    margin: 0 auto;
+    display: table;
+}
+
+.characterConfirm img, .CharacterPoints img{
+    display: table;
+    margin: 0 auto;
+    padding: 32px;
+    width: 128px;
+    border-radius: 48px;
+}
+
+.askConfirm{
+    display: table;
+    margin: 0 auto;
+    padding: 48px;
+    margin-top: 32px;
+    border-radius: 64px;
+    background-color: #2B6069;
+    color: #fff;
+}
+
+.askConfirm button{
+    margin-top: 16px;
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    width: 49%;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.questionScreen{
+    padding: 32px;
+}
+
+.questionScreen .CharacterPointsTimer{
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+}
+
+.CharacterPoints, .CharacterPointsTimer #timerBox{
+    text-align: center;
+    background-color: #2B6069;
+    border-radius: 24px;
+    padding: 8px;
+    height: 207px;
+}
+
+.CharacterPoints img{
+    padding: 6px;
+}
+
+.CharacterPoints #userName{
+    font-size: 24px;
+    color: #fff;
+}
+
+.CharacterPoints{
+    color: #c3c3c3
+}
+
+.CharacterPointsTimer #timer{
+    font-size: 36px;
+    color: #fff;
+    position: relative;
+    top: 25%;
+    transform: translateY(-50%);
+}
+
+.CharacterPointsTimer #separator{
+    margin: 0px 64px 64px 64px;
+    background-color: #1F2B45;
+    color: #fff;
+    border-radius: 32px;
+    padding: 64px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.questionScreen #answerButtons{
+    text-align: center;
+}
+
+.questionScreen #answerButtons button, #continueButton button{
+    font-size: 24px;
+    padding: 24px;
+    margin: 16px;
+    color: #fff;
+    border: none;
+    background-color: #3c4864;
+    border-radius: 48px;
+    transition: all 0.1s ease-in;
+}
+
+#separator p{
+    color: #3aa8bb;
+    font-size: 24px;
+    padding-top: 16px;
+}
+
+.questionScreen #answerButtons button:hover{
+    cursor: pointer;
+    background-color: #6a7591;
+}
+
+#continueButton{
+    display: table;
+    margin: 0 auto;
+}
+
+#continueButton button:hover{
+    opacity: 0.4;
+}
+
+#continueButton button{
+    background-color: #2B6069;
+    cursor: pointer;
+}
+
+.askConfirm #frstBttn{
+    background-color: #f00;
+    font-size: 13px;
+}
+
+.askConfirm #frstBttn:hover{
+    background-color: #FF4C4C;
+}
+
+.askConfirm #scndBttn{
+    background-color: #008000;
+}
+
+.askConfirm #scndBttn:hover{
+    background-color: #30f830;
+}

@@ -1,0 +1,35 @@
+.windowScreen{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 64px;
+}
+
+.windowScreenA{
+    border: 1px solid black;
+
+    /* margin: auto; */
+    text-align: center;
+
+
+    padding: 32px;
+    border-right: 1px solid #1F2B45;
+
+}
+
+.windowScreenB{
+    border: 1px solid black;
+
+    border-left: 1px solid #1F2B45;
+
+}
+
+.rankingDiv{
+    display: table;
+    margin: auto;
+}
+
+.titleRanking{
+    font-size: 32px;
+    font-weight: bold;
+    padding-bottom: 24px;
+}

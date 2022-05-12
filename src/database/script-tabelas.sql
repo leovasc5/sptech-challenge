@@ -1,60 +1,52 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+-- Para teste local no MySQL Workbench
+CREATE USER 'sptech_client'@'localhost' IDENTIFIED BY 'sptech';
+GRANT SELECT, UPDATE, INSERT, DELETE, EXECUTE, SHOW VIEW ON SPTechChallenge.* TO 'sptech_client'@'localhost';
 
-/* para workbench - local - desenvolvimento */
-CREATE DATABASE acquatec;
+CREATE DATABASE SPTechChallenge;
+USE SPTechChallenge;
 
-USE acquatec;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+CREATE TABLE aluno (
+    RA INT PRIMARY KEY,
+    nomeAluno VARCHAR(255),
+    turma VARCHAR(64),
+    semestre INT
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-); 
+CREATE TABLE tentativa (
+    idTentativa INT PRIMARY KEY AUTO_INCREMENT,
+    pontosTentativa VARCHAR(45),
+    qtdAcertos INT,
+    qtdErros INT,
+    level1 INT,
+    level2 INT,
+    level3 INT,
+    level4 INT,
+    level5 INT,
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DOUBLE,
-	umidade DOUBLE,
-	momento DATETIME,
-	fk_aquario INT
+    fkRA INT,
+    FOREIGN KEY (fkRA) REFERENCES aluno (RA)
 );
 
 
-
-
-/* para sql server - remoto - produção */
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
+-- Para Microsoft SQL Server na Azure ou AWS
+CREATE TABLE aluno (
+    RA INT PRIMARY KEY,
+    nomeAluno VARCHAR(255),
+    turma VARCHAR(64),
+    semestre INT
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-); 
+CREATE TABLE tentativa (
+    idTentativa INT PRIMARY KEY IDENTITY(1,1),
+    pontosTentativa VARCHAR(45),
+    qtdAcertos INT,
+    qtdErros INT,
+    level1 INT,
+    level2 INT,
+    level3 INT,
+    level4 INT,
+    level5 INT,
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
+    fkRA INT,
+    FOREIGN KEY (fkRA) REFERENCES aluno (RA)
 );
-
-
