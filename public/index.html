@@ -77,10 +77,10 @@
                         </div>
                         <div class="boxInput">
                             <p><span>Senha</span></p>
-                            <input type="password" id="raInp">
+                            <input type="password" id="senhaInp">
                         </div>
                         <div class="boxInput">
-                            <button>Entrar</button>
+                            <button onclick="loginIndex()">Entrar</button>
                         </div>
                     </div>
                     
@@ -94,8 +94,12 @@
                             <input type="text" id="raInp">
                         </div>
                         <div class="boxInput">
+                            <p><span>E-mail</span></p>
+                            <input type="text" id="emailInp">
+                        </div>
+                        <div class="boxInput">
                             <p><span>Senha</span></p>
-                            <input type="password" id="raInp">
+                            <input type="password" id="senhaInp">
                         </div>
                         <div class="boxInput">
                             <p><span>Curso</span></p>
@@ -121,7 +125,7 @@
                             </select>
                         </div>
                         <div class="boxInput">
-                            <button>Entrar</button>
+                            <button onclick="cadastrarIndex()">Cadastrar</button>
                         </div>
                     </div>
                 </div>
@@ -152,7 +156,7 @@
         hCad.style.cursor = 'default';
 
         janelaB = document.querySelector('.windowScreenB');
-        janelaB.style.height = '576px';
+        janelaB.style.height = '564px';
 
     }
 
@@ -173,7 +177,112 @@
         janelaB = document.querySelector('.windowScreenB');
         janelaB.style.height = 'auto';
     }
+
+    function loginIndex(){
+        var ra = raInp.value;
+        var senha = senhaInp.value;
+
+        if (ra == "" || senha == "") {
+            // Disparar erro
+            return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                raServer: ra,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {        
+            if (resposta.ok) {
+                console.log(resposta);
+            
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+                
+                });
+            
+            } else {
+            
+                console.log("Houve um erro ao tentar realizar o login!");
+            
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function cadastrarIndex(){
+        var nome = nomeInp.value;
+        var ra = raInp.value
+        var email = emailInp.value;
+        var senha = senhaInp.value;
+        var curso = cursoInp.value;
+        var semestre = semestreInp;
+
+        if (nome == "" || ra == "" || email == "" || senha == "" || curso == "" || semestre) {
+            // Mensagem de erro
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // CONTINUAR DAQUI
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
 </script>
+
+<script src="./js/funcoes.js"></script>
 
 <!-- Criado por: LEONARDO VASCONCELOS PAULINO
 GitHub: https://github.com/leovasc5/

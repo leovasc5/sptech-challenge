@@ -13,7 +13,7 @@ const q2 = {
     id: 2,
     mat: materias[0],
     desc: "Foram ensinadas as bases...",
-    resp: "Binárias, Octais, Deimais e Hexadecimais",
+    resp: "Binárias, Octais, Decimais e Hexadecimais",
     options: ["Binárias, Octais e Hexadecimais", "Binárias e Octais", "Binárias e Decimais", "Binárias, Decimais e Hexadecimais"],
     level: 2
 }
@@ -113,7 +113,7 @@ const q13 = {
     mat: materias[2],
     desc: "O que o comando 'git config user.name' executa?",
     resp: "Mostra o user.name configurado no git",
-    options: ["Deleta o user.name do git", "Gera um erro pois falta o comando '--global'"],
+    options: ["Deleta o user.name do git", "Gera um erro pois o comando não existe."],
     level: 3
 }
 
