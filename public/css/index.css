@@ -1,12 +1,10 @@
 .windowScreen{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 64px;
+    padding: 64px 64px 128px 0px;
 }
 
 .windowScreenA{
-    border: 1px solid black;
-
     /* margin: auto; */
     text-align: center;
 
@@ -17,10 +15,8 @@
 }
 
 .windowScreenB{
-    border: 1px solid black;
-
     border-left: 1px solid #1F2B45;
-
+    padding: 32px;
 }
 
 .rankingDiv{
@@ -32,4 +28,85 @@
     font-size: 32px;
     font-weight: bold;
     padding-bottom: 24px;
+}
+
+.boxCadLog{
+    height: 48px;
+    width: 364px;
+    margin: auto;
+}
+
+.boxHeader{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.headerLogin, .headerCadastro{
+    text-align: center;
+    font-size: 24px;
+    padding: 8px;
+}
+
+.headerLogin{
+    background-color: aqua;
+    border-radius: 15px 0px 0px 0px;
+    transition: background-color 1s;
+}
+
+.headerCadastro{
+    background-color: #7e8390;
+    color: #fff;
+    border-radius: 0px 15px 0px 0px;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+
+.formBody{
+    background-color: aqua;
+    padding-top: 16px;
+    margin: 0;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.boxInput{
+    padding: 16px;
+    text-align: center;
+}
+
+.boxInput input{
+    border: none;
+    border-bottom: 1px solid #1F2B45;
+    margin-top: 6px;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+}
+
+.boxInput button{
+    padding: 16px;
+    font-size: 16px;
+    background-color: #1F2B45;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.boxInput button:hover{
+    opacity: 0.6;
+}
+
+.boxInput select{
+    padding: 8px;
+    cursor: pointer;
+    outline: none;
+    width: 264px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+.boxInput option{
+    height: 4px;
 }

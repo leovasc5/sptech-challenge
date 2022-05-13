@@ -28,7 +28,7 @@ CREATE TABLE tentativa (
 );
 
 
--- Para Microsoft SQL Server na Azure ou AWS
+-- Para produção em Microsoft SQL Server na Azure ou AWS
 CREATE TABLE aluno (
     RA INT PRIMARY KEY,
     nomeAluno VARCHAR(255),

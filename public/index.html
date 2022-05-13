@@ -61,12 +61,119 @@
 
         <div class="windowScreenB">
             <div class="boxCadLog">
-
+                <div class="boxHeader">
+                    <div class="headerLogin" onclick="changeLogin()">
+                        <span>Login</span>
+                    </div>
+                    <div class="headerCadastro" onclick="changeCadastro()">
+                        <span>Cadastro</span>
+                    </div>
+                </div>
+                <div class="formBody">
+                    <div id="loginForm">
+                        <div class="boxInput">
+                            <p><span>RA</span></p>
+                            <input type="text" id="raInp">
+                        </div>
+                        <div class="boxInput">
+                            <p><span>Senha</span></p>
+                            <input type="password" id="raInp">
+                        </div>
+                        <div class="boxInput">
+                            <button>Entrar</button>
+                        </div>
+                    </div>
+                    
+                    <div id="cadastroBox" style="display: none">
+                        <div class="boxInput">
+                            <p><span>Nome Completo</span></p>
+                            <input type="text" id="nomeInp">
+                        </div>
+                        <div class="boxInput">
+                            <p><span>RA</span></p>
+                            <input type="text" id="raInp">
+                        </div>
+                        <div class="boxInput">
+                            <p><span>Senha</span></p>
+                            <input type="password" id="raInp">
+                        </div>
+                        <div class="boxInput">
+                            <p><span>Curso</span></p>
+                            <select id="cursoInp">
+                                <option value="0">Selecione...</option>
+                                <option value="1">Análise e Desenvolvimento de Sistemas</option>
+                                <option value="2">Ciência da Computação</option>
+                                <option value="3">Sistemas de Informação</option>
+                            </select>
+                        </div>
+                        <div class="boxInput">
+                            <p><span>Semestre</span></p>
+                            <select id="semestreInp">
+                                <option value="0">Selecione...</option>
+                                <option value="1">1º Semestre</option>
+                                <option value="2">2º Semestre</option>
+                                <option value="3">3º Semestre</option>
+                                <option value="4">4º Semestre</option>
+                                <option value="5">5º Semestre</option>
+                                <option value="6">6º Semestre</option>
+                                <option value="7">7º Semestre</option>
+                                <option value="8">8º Semestre</option>
+                            </select>
+                        </div>
+                        <div class="boxInput">
+                            <button>Entrar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
+    <div class="footer">
+        <p>Desenvolvido com carinho por</p>
+        <p><a href="www.github.com/leovasc5" style="text-decoration:none; color:#63B1BD">Leonardo Vasconcelos Paulino</a></p>
+    </div>
 </body>
 </html>
+
+<script>
+    function changeCadastro(){
+        loginForm.style.display = 'none';
+        cadastroBox.style.display = 'block';
+
+        hLog = document.querySelector('.headerLogin');
+        hLog.style.backgroundColor = '#7e8390';
+        hLog.style.color = '#fff';
+        hLog.style.cursor = 'pointer';
+
+        hCad = document.querySelector('.headerCadastro');
+        hCad.style.backgroundColor = 'aqua';
+        hCad.style.color = '#1F2B45';
+        hCad.style.cursor = 'default';
+
+        janelaB = document.querySelector('.windowScreenB');
+        janelaB.style.height = '576px';
+
+    }
+
+    function changeLogin(){
+        loginForm.style.display = 'block';
+        cadastroBox.style.display = 'none';
+
+        hLog = document.querySelector('.headerLogin');
+        hLog.style.backgroundColor = 'aqua';
+        hLog.style.color = '#1F2B45';
+        hLog.style.cursor = 'default';
+
+        hCad = document.querySelector('.headerCadastro');
+        hCad.style.backgroundColor = '#7e8390';
+        hCad.style.color = '#fff';
+        hCad.style.cursor = 'pointer';
+
+        janelaB = document.querySelector('.windowScreenB');
+        janelaB.style.height = 'auto';
+    }
+</script>
 
 <!-- Criado por: LEONARDO VASCONCELOS PAULINO
 GitHub: https://github.com/leovasc5/
