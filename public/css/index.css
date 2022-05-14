@@ -5,13 +5,9 @@
 }
 
 .windowScreenA{
-    /* margin: auto; */
     text-align: center;
-
-
     padding: 32px;
     border-right: 1px solid #1F2B45;
-
 }
 
 .windowScreenB{
@@ -110,4 +106,18 @@
 
 .boxInput option{
     height: 4px;
+}
+
+.erroBox{
+    display: none;
+    margin: auto;
+    padding: 32px;
+    width: 256px;
+}
+
+.erroMsg{
+    background-color: #ffcccc;
+    padding: 32px;
+    border: 1px solid #f00;
+    font-weight: 500;
 }

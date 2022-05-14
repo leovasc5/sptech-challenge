@@ -10,11 +10,9 @@ function listar() {
 }
 
 function entrar(ra, senha) {
-    console.log('Passou no Banco de Dados');
     return database.executar(`SELECT RA, nomeAluno, email, curso, semestre, qtdTentativas FROM aluno WHERE RA = ${ra} AND senha = '${senha}' LIMIT 1;`);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nome, ra, email, senha, curso, semestre) {
     return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);`);
 }
