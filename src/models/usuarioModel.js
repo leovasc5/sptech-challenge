@@ -10,21 +10,13 @@ function listar() {
 }
 
 function entrar(ra, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `
-        SELECT * FROM aluno WHERE RA = '${ra}' AND senha = '${senha}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log('Passou no Banco de Dados');
+    return database.executar(`SELECT RA, nomeAluno, email, curso, semestre, qtdTentativas FROM aluno WHERE RA = ${ra} AND senha = '${senha}' LIMIT 1;`);
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nome, ra, email, senha, curso, semestre) {
-    var instrucao = `
-        INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);`);
 }
 
 module.exports = {
