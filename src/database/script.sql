@@ -10,7 +10,7 @@ CREATE TABLE aluno (
     nomeAluno VARCHAR(256) NOT NULL,
     email VARCHAR(256) NOT NULL UNIQUE,
     senha VARCHAR(256) NOT NULL,
-    turma VARCHAR(64) NOT NULL,
+    curso VARCHAR(64) NOT NULL,
     semestre INT NOT NULL,
     qtdTentativas INT NOT NULL
 );

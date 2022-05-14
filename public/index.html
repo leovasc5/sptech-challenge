@@ -91,7 +91,7 @@
                         </div>
                         <div class="boxInput">
                             <p><span>RA</span></p>
-                            <input type="text" id="raInp">
+                            <input type="text" id="raInpCad">
                         </div>
                         <div class="boxInput">
                             <p><span>E-mail</span></p>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="boxInput">
                             <p><span>Senha</span></p>
-                            <input type="password" id="senhaInp">
+                            <input type="password" id="senhaInpCad">
                         </div>
                         <div class="boxInput">
                             <p><span>Curso</span></p>
@@ -232,15 +232,33 @@
     }
 
     function cadastrarIndex(){
+        console.log('Rodando Cadastrar');
         var nome = nomeInp.value;
-        var ra = raInp.value
+        var ra = raInpCad.value
         var email = emailInp.value;
-        var senha = senhaInp.value;
+        var senha = senhaInpCad.value;
         var curso = cursoInp.value;
-        var semestre = semestreInp;
+        var semestre = semestreInp.value;
 
-        if (nome == "" || ra == "" || email == "" || senha == "" || curso == "" || semestre) {
+        if(curso == '1'){
+            curso = 'Análise e Desenvolvimento de Sistemas';
+        }else if(curso == '2'){
+            curso = 'Ciência da Computação';
+        }else if(curso == '3'){
+            curso = 'Sistemas de Informação';
+        }else{
+            // Gerar erro
+        }
+
+        if (nome == "" || ra == "" || email == "" || senha == "" || curso == "" || semestre == "") {
             // Mensagem de erro
+            console.log('Erro de caixa');
+            console.log(nomeInp.value);
+            console.log(raInpCad.value);
+            console.log(emailInp.value);
+            console.log(senhaInpCad.value);
+            console.log(cursoInp.value);
+            console.log(semestreInp.value);
             return false;
         }
 
@@ -250,32 +268,33 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // CONTINUAR DAQUI
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                nomeServer: nome,
+                raServer: ra,
+                emailServer: email,
+                senhaServer: senha,
+                cursoServer: curso,
+                semestreServer: semestre
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // Mensagem de Sucesso
+                console.log('Deu certo');
 
                 setTimeout(() => {
-                    window.location = "login.html";
+                    window.location.reload();
                 }, "2000")
-                
-                limparFormulario();
-                finalizarAguardar();
             } else {
+                // Mensagem de erro
+                console.log('Erro no back');
+
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
