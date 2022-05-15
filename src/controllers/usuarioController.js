@@ -50,7 +50,6 @@ function entrar(req, res) {
                 }
             );
     }
-
 }
 
 function cadastrar(req, res) {
