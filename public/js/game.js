@@ -153,6 +153,21 @@ function question() {
         separator.appendChild(newDesc);
         separator.appendChild(newMateria);
 
+        newTeacherImage = document.createElement('img');
+        newTeacherImage.setAttribute('class', questions[i]['id']);
+        newTeacherImage.setAttribute('src', questions[i]['teacherImg']);
+        
+        newTeacherName = document.createElement('span');
+        newTeacherName.setAttribute('class', questions[i]['id']);
+        newTeacherName.textContent = questions[i]['teacherName'];        
+
+        if(i != 0){
+            newTeacherImage.setAttribute('style', 'display: none');
+            newTeacherName.setAttribute('style', 'display: none');
+        }
+        characterBox.appendChild(newTeacherImage);
+        characterBox.appendChild(newTeacherName);
+
         options = shuffleAnswers(questions[i]['resp'], questions[i]['options']);
 
         for (k = 0; k <= (options.length - 1); k++) {
@@ -185,8 +200,8 @@ function start() {
     confirmAudio.play();
     startGame.style.display = "None";
 
-    userImage.src = character.url_photo;
-    userName.innerHTML = character.nome;
+    // userImage.src = character.url_photo;
+    // userName.innerHTML = character.nome;
 
     timedCount();
     questionScreen.style.display = "block";
@@ -194,5 +209,5 @@ function start() {
 }
 
 // Criado por: LEONARDO VASCONCELOS PAULINO
-// GitHub: https://github.com/leovasc5/CSVtoMongoDB
+// GitHub: https://github.com/leovasc5/
 // Instagram: https://www.instagram.com/leovasc5
