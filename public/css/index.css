@@ -121,3 +121,10 @@
     border: 1px solid #f00;
     font-weight: 500;
 }
+
+.contaRegistrada{
+    background-color: #b7d5ac;
+    color: #008000;
+    text-align: center;
+    padding: 16px;
+}
