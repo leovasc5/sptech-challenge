@@ -17,8 +17,13 @@ function cadastrar(nome, ra, email, senha, curso, semestre) {
     return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);`);
 }
 
+function historyUser(ra){
+    return database.executar(`SELECT * FROM tentativa WHERE fkRA = ${ra} ORDER BY pontosTentativa DESC LIMIT 1;`);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    historyUser
 };

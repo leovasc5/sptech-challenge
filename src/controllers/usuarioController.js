@@ -1,3 +1,4 @@
+const { stringify } = require("nodemon/lib/utils");
 var usuarioModel = require("../models/usuarioModel");
 
 var sessoes = [];
@@ -78,7 +79,6 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(nome, ra, email, senha, curso, semestre)
             .then(
                 function (resultado) {
-                    console.log('Entrou')
                     res.json(resultado);
                 }
             ).catch(
@@ -94,9 +94,27 @@ function cadastrar(req, res) {
     }
 }
 
+function historyUser(req, res) {
+    usuarioModel.historyUser(req.body.ra)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    historyUser
 }
