@@ -108,14 +108,14 @@
     height: 4px;
 }
 
-.erroBox{
+.erroBox, .erroBoxLogin{
     display: none;
     margin: auto;
     padding: 32px;
     width: 256px;
 }
 
-.erroMsg{
+.erroMsg, .erroMsgLogin{
     background-color: #ffcccc;
     padding: 32px;
     border: 1px solid #f00;
@@ -123,6 +123,7 @@
 }
 
 .contaRegistrada{
+    display: none;
     background-color: #b7d5ac;
     color: #008000;
     text-align: center;

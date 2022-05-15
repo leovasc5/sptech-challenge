@@ -76,11 +76,16 @@
                     <div id="loginForm">
                         <div class="boxInput">
                             <p><span>RA</span></p>
-                            <input type="text" id="raInp" required>
+                            <input type="text" id="raInp" maxlength="8">
                         </div>
                         <div class="boxInput">
                             <p><span>Senha</span></p>
-                            <input type="password" id="senhaInp" required>
+                            <input type="password" id="senhaInp" maxlength="256">
+                        </div>
+                        <div class="erroBoxLogin">
+                            <div class="erroMsgLogin">
+                                <span id="msgErroLogin"></span>
+                            </div>
                         </div>
                         <div class="boxInput">
                             <button onclick="loginIndex()">Entrar</button>
@@ -90,19 +95,19 @@
                     <div id="cadastroBox" style="display: none">
                         <div class="boxInput">
                             <p><span>Nome Completo</span></p>
-                            <input type="text" id="nomeInp" required>
+                            <input type="text" id="nomeInp" maxlength="256">
                         </div>
                         <div class="boxInput">
                             <p><span>RA</span></p>
-                            <input type="text" id="raInpCad" required>
+                            <input type="text" id="raInpCad" maxlength="8">
                         </div>
                         <div class="boxInput">
                             <p><span>E-mail</span></p>
-                            <input type="text" id="emailInp" required>
+                            <input type="text" id="emailInp" maxlength="256">
                         </div>
                         <div class="boxInput">
                             <p><span>Senha</span></p>
-                            <input type="password" id="senhaInpCad" required>
+                            <input type="password" id="senhaInpCad" maxlength="256">
                         </div>
                         <div class="boxInput">
                             <p><span>Curso</span></p>
@@ -149,7 +154,7 @@
 </html>
 
 <script>
-    var sizeWindowScreenB = '564px';
+    var sizeWindowScreenB = '';
     if(window.location.search.substr(1) == 'contaRegistrada'){
         document.querySelector('.contaRegistrada').style.display = 'block';
     }
@@ -169,9 +174,11 @@
         hCad.style.color = '#1F2B45';
         hCad.style.cursor = 'default';
 
+        sizeWindowScreenB = '564px';
         document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
     }
 
+    var erro = false;
     function changeLogin(){
         loginForm.style.display = 'block';
         cadastroBox.style.display = 'none';
@@ -186,7 +193,12 @@
         hCad.style.color = '#fff';
         hCad.style.cursor = 'pointer';
 
-        document.querySelector('.windowScreenB').style.height = 'auto';
+        if(erro){
+            document.querySelector('.windowScreenB').style.height = '364px';
+        }else{
+            document.querySelector('.windowScreenB').style.height = 'auto';
+
+        }
     }
 
     function loginIndex(){
@@ -194,9 +206,12 @@
         var senha = senhaInp.value;
 
         if (ra == "" || senha == "") {
-            document.querySelector('.erroBox').style.display = 'block';
-            msgErro.innerHTML += 'Todos os campos devem ser preenchidos!';
-            
+            document.querySelector('.erroBoxLogin').style.display = 'block';
+            msgErroLogin.innerHTML += 'Todos os campos devem ser preenchidos!';
+            sizeWindowScreenB = '364px';
+            document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
+            erro = true;
+
             return false;
         }
 
@@ -223,16 +238,19 @@
                 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
-                    }, 1000); //Para colocar uma mensagem positiva
+                    }, 1000);
                 });
             
             } else {
-            
                 console.log("Houve um erro ao tentar realizar o login!");
             
                 resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
+                    document.querySelector('.erroBoxLogin').style.display = 'block';
+                    msgErroLogin.innerHTML += texto;
+                    sizeWindowScreenB = '364px';
+                    document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
+
+                    erro = true;
                 });
             }
         
