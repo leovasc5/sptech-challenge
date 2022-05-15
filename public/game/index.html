@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/finish.css">
+    <link rel="shortcut icon" href="https://www.sptech.school/assets/images/favicons/favicon_01.png"/>
+    <title>SPTech Challenge</title>
+</head>
+<body>
+    <div class="head">
+        <h1>SPTech Challenge</h1>
+        <span>Jogue com os seus professores preferidos!</span>
+    </div>
+
+    <div class="cardsBox" id="cardsBox">
+        <h1>ESCOLHA SEU PERSONAGEM</h1>
+
+        <div class="columns">
+            <div class="cardBox" onclick="choose(0)">
+            </div>
+
+            <div class="cardBox" onclick="choose(1)">
+            </div>
+            
+            <div class="cardBox" onclick="choose(2)">
+            </div>
+
+            <div class="cardBox" onclick="choose(3)">
+            </div>
+
+            <div class="cardBox" onclick="choose(4)">
+            </div>
+
+            <div class="cardBox" onclick="choose(5)">
+            </div>
+
+            <div class="cardBox" onclick="choose(6)">
+            </div>
+        </div>
+    </div>
+    
+    <div class="startGame" id="startGame" style="display: none">
+        <div id="characterConfirm" class="characterConfirm">
+            <img id="characterPhoto">
+            <h1 class="characterSelected" id="characterSelected"></h1>
+        </div>
+        
+        <div class="askConfirm">
+            <h1 class="ask">COMEÇAR O JOGO?</h1>
+            <div id="askButtons">
+                <button id="frstBttn" onclick="choiceOther()">ESCOLHER OUTRO</button>
+                <button id="scndBttn" onclick="start()">SIM</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="questionScreen" id="questionScreen" style="display: none">
+        <div class="CharacterPointsTimer">
+            <div id="timerBox">
+                <span id="timer">15:00</span>
+            </div>
+
+            <div id="separator">
+            </div>
+
+            <div class="CharacterPoints">
+                <div id="characterBox">
+                    <img id="userImage" alt="Personagem">
+                    <span id="userName"></span>
+                </div>
+                <span id="txtPoints">Pontos: </span>
+                <span id="points">0</span>
+            </div>
+        </div>
+        
+        <div id="answerButtons">
+        </div>
+        <div id="continueButton">
+        </div>
+    </div>
+
+    <div id="finishScreen">
+    </div>
+
+    <div class="resultScreen" id="resultScreen" style="display: none;">
+        <h2>VOCÊ FEZ <span id="resultadoPts"></span> PONTOS!</h2>
+        <span class="labelView">VEJA ABAIXO OS SEUS RESULTADOS</span>
+        <div class="PointsCharts">
+            <canvas id="myChart" style="width:100%;max-width:600px;display: table;margin: 0 auto;"></canvas>
+        </div>
+    </div>
+    <audio id="foobar" src="../assets/audios/finish.wav" preload="auto"> 
+</body>
+</html>
+
+<script src="../js/characters.js" type="text/javascript"></script>
+<script src="../js/questions.js" type="text/javascript"></script>
+<script src="../js/audios.js" type="text/javascript"></script>
+<script src="../js/game.js" type="text/javascript"></script>
+<script src="../js/index.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<!-- Criado por: LEONARDO VASCONCELOS PAULINO
+GitHub: https://github.com/leovasc5/
+Instagram: https://www.instagram.com/leovasc5 -->

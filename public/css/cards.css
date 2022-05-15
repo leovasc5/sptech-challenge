@@ -1,0 +1,60 @@
+.cardsBox{
+    text-align: center;
+}
+
+.cardsBox h1{
+    padding: 24px;
+    font-size: 32px;
+}
+
+.columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    padding: 0px 156px 32px 156px;
+}
+
+.cardBox{
+    border-radius: 16px;
+    background-color: #2B6069;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.cardBox:hover{
+    background-color: #377783;
+    width: 95%;
+    border: 2px solid #2B6069;
+    transition: 0.5s;
+}
+
+.cardBox img{
+    width: 64px;
+    border-radius: 16px;
+}
+
+.cardBox img{
+    width: 85%;
+    border-radius: 16px;
+}
+
+.cardBox .spanNome{
+    font-size: 20px;
+    color: #fff;
+}
+
+.cardBox .spanDesc{
+    font-size: 16px;
+    color: #63B1BD;
+}
+
+.cardBox .spanHabTitle{
+    font-size: 20px;
+    color: #fff;
+}
+
+.cardBox .ulHab li{
+    color: #63B1BD;
+    display: block;
+}
