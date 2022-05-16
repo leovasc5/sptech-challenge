@@ -1,3 +1,19 @@
+.janela{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 64px;
+}
+
+.newJanelaAContainer, .newJanelaBContainer{
+    background-color: #acccd2;
+    margin: auto;
+    border-radius: 14px;
+    box-shadow: 5px 5px 18px #888888;
+
+    height: 100px;
+    width: 90%;
+}
+
 .startGame{
     padding: 64px;
 }
