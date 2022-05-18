@@ -42,6 +42,21 @@ fetch("/usuarios/history", {
         newKpis = document.createElement('div');
         newKpis.setAttribute('class', 'newKpis');
 
+        newKpi1 = document.createElement('div');
+        newKpi1.setAttribute('class', 'kpi');
+        newKpi1.innerHTML = `<span id='kpiTitle'>Quantidade de Tentativas</span>
+        <span id='kpiData'>${sessionStorage.qtdTentativas}</span>`;
+
+        newKpi2 = document.createElement('div');
+        newKpi2.setAttribute('class', 'kpi');
+        newKpi2.innerHTML = `<span id='kpiTitle'>Quantidade de Tentativas</span>
+        <span id='kpiData'>${sessionStorage.pontosTentativa}</span>`;
+
+        newKpi3 = document.createElement('div');
+        newKpi3.setAttribute('class', 'kpi');
+        newKpi3.innerHTML = `<span id='kpiTitle'>Posição Global</span>
+        <span id='kpiData'>Loading...</span>`;
+        
         janela.appendChild(newJanelaA);
         janela.appendChild(newJanelaB);
         
@@ -52,6 +67,9 @@ fetch("/usuarios/history", {
         newJanelaB.appendChild(newKpis);
 
         newJanelaAContainer.appendChild(newJanelaACanvas);
+        newKpis.appendChild(newKpi1);
+        newKpis.appendChild(newKpi2);
+        newKpis.appendChild(newKpi3);
 
         const data = {
             labels: ['Muito Fáceis', 'Fáceis', 'Médianas', 'Díficeis', 'Muito Díficeis'],

@@ -15,9 +15,32 @@
 }
 
 .newKpis{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
     color: #000;
-    height: 200px;
-    width: 100%;
+    margin: auto;
+    margin-top: 18px;
+    width: 90%;
+}
+
+.kpi{
+    background-color: #acccd2;
+    border-radius: 14px;
+    box-shadow: 5px 5px 18px #888888;
+    white-space: pre-line;
+    margin: 8px;
+    padding: 32px;
+    color: #1F2B45;
+}
+
+.kpi #kpiTitle{
+    font-weight: inherit;
+}
+
+.kpi #kpiData{
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .startButton{
