@@ -29,6 +29,7 @@ fetch("/usuarios/history", {
         newJanelaBContainer.setAttribute('class', 'newJanelaBContainer');
 
         newJanelaAh2 = document.createElement('div');
+        newJanelaAh2.setAttribute('class', 'janelaAh2');
         newJanelaAh2.innerHTML = "Melhor Tentativa";
 
         newJanelaACanvas = document.createElement('Canvas');
@@ -50,7 +51,7 @@ fetch("/usuarios/history", {
         newKpi2 = document.createElement('div');
         newKpi2.setAttribute('class', 'kpi');
         newKpi2.innerHTML = `<span id='kpiTitle'>Quantidade de Tentativas</span>
-        <span id='kpiData'>${sessionStorage.pontosTentativa}</span>`;
+        <span id='kpiData'>${sessionStorage['pontosTentativa']}</span>`;
 
         newKpi3 = document.createElement('div');
         newKpi3.setAttribute('class', 'kpi');
@@ -74,17 +75,25 @@ fetch("/usuarios/history", {
         const data = {
             labels: ['Muito Fáceis', 'Fáceis', 'Médianas', 'Díficeis', 'Muito Díficeis'],
             datasets: [{
-              label: 'Sua Melhor Tentativa',
-              data: [sessionStorage.level1, sessionStorage.level2, sessionStorage.level3, sessionStorage.level4, sessionStorage.level5],
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1
-            }]
+                label: "",
+                data: [sessionStorage.level1, sessionStorage.level2, sessionStorage.level3, sessionStorage.level4, sessionStorage.level5],
+                fill: false,
+                borderColor: '#1F2B45',
+                tension: 0.1
+            }],
+            
         };
 
         const config = {
-            type: 'line',
+            type: 'bar',
             data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        plugins: false
+                    }
+                }
+            }
         };
 
         const grafico = new Chart(
@@ -93,7 +102,7 @@ fetch("/usuarios/history", {
         );
     } else {
         console.log("Não há dados sobre o usuário");
-resposta.text().then(texto => {
+        resposta.text().then(texto => {
         console.log(texto);
     });
 }
