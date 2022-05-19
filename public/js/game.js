@@ -1,23 +1,3 @@
-function choose(obj) {
-    selectAudio.play();
-    cardsBox.style.display = "none";
-    startGame.style.display = "block";
-    characterPhoto.src = characters[obj]['url_photo']
-
-    character.nome = characters[obj]['nome'];
-    character.desc = characters[obj]['desc'];
-    character.hab = characters[obj]['hab'];
-    character.url_photo = characters[obj]['url_photo'];
-
-    characterSelected.innerHTML = `VOCÊ ESCOLHEU: "${(characters[obj]['nome']).toUpperCase()}"`
-}
-
-function choiceOther() {
-    errorAudio.play();
-    cardsBox.style.display = "block";
-    startGame.style.display = "none";
-}
-
 function finishGame(status) {
     finishAudio.play();
     questionScreen.style.display = "none";
