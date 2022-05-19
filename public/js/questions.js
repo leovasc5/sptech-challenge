@@ -5,7 +5,7 @@ const professoresImg = [
     "https://media-exp1.licdn.com/dms/image/C4D03AQGMWoXbGWAxJw/profile-displayphoto-shrink_800_800/0/1637609695130?e=1658361600&v=beta&t=qJTkkEFyBPRAj8SqbXtTO3uajkNL9rYx46mA0GroWdg",
     "https://media-exp1.licdn.com/dms/image/C4D03AQHhCT5LgZMxBw/profile-displayphoto-shrink_200_200/0/1637609543662?e=1652918400&v=beta&t=Y3ith_daqssxMvfpEVapsGXg-NwGRxPgKK680tOGw_I",
     "https://media-exp1.licdn.com/dms/image/C4E03AQEN5ZaYGHcUxg/profile-displayphoto-shrink_200_200/0/1637947732402?e=1652918400&v=beta&t=SUBWBF01EXH_uoMjHBEUR-TGcGqI0dGqm7NEIN5446c",
-    "https://media-exp1.licdn.com/dms/image/C4D03AQFH1K7TlZNAUg/profile-displayphoto-shrink_200_200/0/1642515422039?e=1652918400&v=beta&t=2ErT90yS93BvoSyXgME5WQpNIvtZRcO_-cqcgvv6lhE"
+    "https://media-exp1.licdn.com/dms/image/C4D03AQFH1K7TlZNAUg/profile-displayphoto-shrink_400_400/0/1642515422039?e=1658361600&v=beta&t=vYLEjYzhUGquOMBG10vAHCQT7tBf-8WjE0XFfeu4MB8"
 ];
 
 const professoresName = ['Marise', 'Freeza', 'Brandão', 'Petry', 'Célia'];

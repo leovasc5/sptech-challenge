@@ -57,12 +57,11 @@ function results(){
 
     newResultB.appendChild(newResultadoNewKpis);
         
-    newResultA.appendChild(newResultadoCanvas);
     newResultadoNewKpis.appendChild(newResultadoNewKpi1);
     newResultadoNewKpis.appendChild(newResultadoNewKpi2);
     newResultadoNewKpis.appendChild(newResultadoNewKpi3);
 
-    const data = {
+    var data2 = {
         labels: ['Muito Fáceis', 'Fáceis', 'Médianas', 'Díficeis', 'Muito Díficeis'],
         datasets: [
             {
@@ -78,9 +77,9 @@ function results(){
         ]
     };
         
-    const config = {
+    var config2 = {
         type: 'radar',
-        data: data,
+        data: data2,
         options: {
             scales: {
                 r: {
@@ -93,12 +92,13 @@ function results(){
                     display: false
                 }
             },
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            responsive: false
         }
     };
         
-    const grafico = new Chart(
+    var grafico2 = new Chart(
         document.getElementById('graficoResultado'),
-        config
+        config2
     );
 }

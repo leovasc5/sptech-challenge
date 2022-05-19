@@ -61,7 +61,7 @@ function renderizarWindowTentativa(){
         
     newKpi2 = document.createElement('div');
     newKpi2.setAttribute('class', 'kpi');
-    newKpi2.innerHTML = `<span id='kpiTitle'>Quantidade de Tentativas</span>
+    newKpi2.innerHTML = `<span id='kpiTitle'>Maior Pontuação</span>
     <span id='kpiData'>${sessionStorage['pontosTentativa']}</span>`;
         
     newKpi3 = document.createElement('div');
