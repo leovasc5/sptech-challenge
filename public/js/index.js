@@ -74,25 +74,37 @@ fetch("/usuarios/history", {
 
         const data = {
             labels: ['Muito Fáceis', 'Fáceis', 'Médianas', 'Díficeis', 'Muito Díficeis'],
-            datasets: [{
-                label: "",
-                data: [sessionStorage.level1, sessionStorage.level2, sessionStorage.level3, sessionStorage.level4, sessionStorage.level5],
-                fill: false,
-                borderColor: '#1F2B45',
-                tension: 0.1
-            }],
-            
+            datasets: [
+                {
+                  label: "",
+                  fill: true,
+                  color: '#fff',
+                  backgroundColor: "rgba(142, 196, 206, 0.8)",
+                  borderColor: "rgba(31, 43, 69,1)",
+                  pointBorderColor: "#fff",
+                  pointBackgroundColor: "transparent",
+                  data: [sessionStorage.level1, sessionStorage.level2, sessionStorage.level3, sessionStorage.level4, sessionStorage.level5]
+                }
+            ]
         };
 
         const config = {
-            type: 'bar',
+            type: 'radar',
             data: data,
             options: {
+                scales: {
+                    r: {
+                        suggestedMin: 0,
+                        suggestedMax: 6
+                    }
+                },
                 plugins: {
                     legend: {
-                        plugins: false
+                        display: false
                     }
-                }
+                },
+                maintainAspectRatio: false
+                
             }
         };
 
