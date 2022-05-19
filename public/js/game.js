@@ -198,11 +198,12 @@ function question() {
 
 function start() {
     confirmAudio.play();
-    startGame.style.display = "None";
-
-    // userImage.src = character.url_photo;
-    // userName.innerHTML = character.nome;
-
+    document.querySelector('.head').style.display = 'none';
+    try{
+        document.querySelector('.janelaNova').style.display = 'none';
+    }catch (err){
+        document.querySelector('.janela').style.display = 'none';
+    }
     timedCount();
     questionScreen.style.display = "block";
     question();

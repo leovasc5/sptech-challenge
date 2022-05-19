@@ -100,7 +100,7 @@ function historyUser(req, res) {
             if (resultado.length > 0) {
                 res.json(resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado!")
+                res.json([]);
             }
         }).catch(
             function (erro) {
