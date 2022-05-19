@@ -41,7 +41,7 @@ function finishGame(status) {
 }
 
 var timerOn = true;
-var time = 900;
+var time = 600;
 
 function fmtMSS(s) {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s
@@ -86,8 +86,9 @@ function shuffleAnswers(resp, options) {
 }
 
 var questions = shuffleQuestions(getQuestions());
-var pontos = 0;
 var questoesAntigas = [];
+
+var lv1 = lv2 = lv3 = lv4 = lv5 = qtdAcertos = qtdErros = pontos = 0;
 
 function skipQuestion(element) {
     selectPassAudio.play();
@@ -119,11 +120,22 @@ function reviewQuestion(element) {
             if (questions[l]['resp'] == element.textContent) {
                 correctAudio.play()
                 element.style.backgroundColor = "green";
+
                 pontos += questions[l]['level'] * 25;
+                qtdAcertos++;
+
+                lv1+=1 ? questions[l]['level'] == 1 : lv1 += 0
+                lv2+=1 ? questions[l]['level'] == 2 : lv2 += 0
+                lv3+=1 ? questions[l]['level'] == 3 : lv3 += 0
+                lv4+=1 ? questions[l]['level'] == 4 : lv4 += 0
+                lv5+=1 ? questions[l]['level'] == 5 : lv5 += 0
+
                 points.innerHTML = pontos;
             } else {
                 errorAudio.play();
                 element.style.backgroundColor = "red";
+                qtdErros++;
+
                 btns = document.getElementsByClassName(element.id.toString());
                 for (p = 0; p <= (btns.length - 1); p++) {
                     if (questions[l]['resp'] == btns[p].textContent) {

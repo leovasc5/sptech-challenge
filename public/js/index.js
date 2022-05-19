@@ -9,8 +9,6 @@ fetch("/usuarios/history", {
 }).then(function (resposta) {        
     if (resposta.ok) {
         resposta.json().then(json => {
-            console.log(json)
-            console.log(JSON.stringify(json));
             if (!(JSON.stringify(json)=='[]')){
                 fieldNames = Object.keys(json[0]);
         
