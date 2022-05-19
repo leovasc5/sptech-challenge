@@ -1,0 +1,104 @@
+function results(){
+    finishScreen.style.display = "none";
+
+    newResultA = document.createElement('div');
+    newResultA.setAttribute('class', 'newResultA');
+
+    newResultB = document.createElement('div');
+    newResultB.setAttribute('class', 'newResultB');
+
+    newResultBContainer = document.createElement('div');
+    newResultBContainer.setAttribute('class', 'newResultBContainer');
+
+    newResultado = document.createElement('div');
+    newResultado.setAttribute('class', 'newResultado');
+    newResultado.innerHTML = `Pontos: ${pontos}`;
+        
+    newResultadoCanvas = document.createElement('Canvas');
+    newResultadoCanvas.setAttribute('id', 'graficoResultado');
+        
+    newResultadoNovaTentativa = document.createElement('button');
+    newResultadoNovaTentativa.setAttribute('onclick', 'start()');
+    newResultadoNovaTentativa.setAttribute('class', 'startButton');
+    newResultadoNovaTentativa.textContent = 'Iniciar Nova Tentativa';
+
+    newResultadoTelaInicial = document.createElement('button');
+    newResultadoTelaInicial.setAttribute('onclick', 'location.reload()');
+    newResultadoTelaInicial.setAttribute('class', 'startButton');
+    newResultadoTelaInicial.textContent = 'Tela Inicial';
+        
+    newResultadoNewKpis = document.createElement('div');
+    newResultadoNewKpis.setAttribute('class', 'newKpis');
+        
+    newResultadoNewKpi1 = document.createElement('div');
+    newResultadoNewKpi1.setAttribute('class', 'kpi');
+    newResultadoNewKpi1.innerHTML = `<span id='kpiTitle'>Pontos</span>
+    <span id='kpiData'>${pontos}</span>`;
+        
+    newResultadoNewKpi2 = document.createElement('div');
+    newResultadoNewKpi2.setAttribute('class', 'kpi');
+    newResultadoNewKpi2.innerHTML = `<span id='kpiTitle'>Tempo Restante</span>
+    <span id='kpiData'>${'99:99'}</span>`;
+        
+    newResultadoNewKpi3 = document.createElement('div');
+    newResultadoNewKpi3.setAttribute('class', 'kpi');
+    newResultadoNewKpi3.innerHTML = `<span id='kpiTitle'>Acertos</span>
+    <span id='kpiData'>${qtdAcertos}/${qtdAcertos+qtdErros}</span>`;
+                
+    resultScreen.appendChild(newResultA);
+    resultScreen.appendChild(newResultB);
+    
+    newResultA.appendChild(newResultado);
+    newResultA.appendChild(newResultadoCanvas);
+
+    newResultB.appendChild(newResultBContainer);
+    newResultBContainer.appendChild(newResultadoNovaTentativa);
+    newResultBContainer.appendChild(newResultadoTelaInicial);
+
+    newResultB.appendChild(newResultadoNewKpis);
+        
+    newResultA.appendChild(newResultadoCanvas);
+    newResultadoNewKpis.appendChild(newResultadoNewKpi1);
+    newResultadoNewKpis.appendChild(newResultadoNewKpi2);
+    newResultadoNewKpis.appendChild(newResultadoNewKpi3);
+
+    const data = {
+        labels: ['Muito Fáceis', 'Fáceis', 'Médianas', 'Díficeis', 'Muito Díficeis'],
+        datasets: [
+            {
+              label: "",
+              fill: true,
+              color: '#fff',
+              backgroundColor: "rgba(142, 196, 206, 0.8)",
+              borderColor: "rgba(31, 43, 69,1)",
+              pointBorderColor: "#fff",
+              pointBackgroundColor: "transparent",
+              data: [lv1, lv2, lv3, lv4, lv5]
+            }
+        ]
+    };
+        
+    const config = {
+        type: 'radar',
+        data: data,
+        options: {
+            scales: {
+                r: {
+                    suggestedMin: 0,
+                    suggestedMax: 6
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            maintainAspectRatio: false
+        }
+    };
+        
+    const grafico = new Chart(
+        document.getElementById('graficoResultado'),
+        config
+    );
+}

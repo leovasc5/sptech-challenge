@@ -1,4 +1,4 @@
-.janela{
+.janela, .resultScreen{
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
@@ -12,7 +12,7 @@
     transform: translate(-50%, -50%);
 }
 
-.newJanelaA, .newJanelaBContainer{
+.newJanelaA, .newJanelaBContainer, .newResultA, .newResultBContainer{
     text-align: center;
     background-color: #acccd2;
     border-radius: 14px;
@@ -22,7 +22,7 @@
     width: 90%;
 }
 
-.janelaAh2{
+.janelaAh2, .newResultado{
     font-size: 24px;
     padding: 16px;
     color: #1F2B45;
@@ -30,6 +30,10 @@
 
 .newJanelaAContainer{
     padding: 24px;
+}
+
+canvas{
+    cursor: pointer;
 }
 
 .newKpis{
