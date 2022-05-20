@@ -13,6 +13,7 @@ fetch("/usuarios/history", {
                 fieldNames = Object.keys(json[0]);
         
                 for(let i = 0; i <= Object.keys(json[0]).length-1; i++){
+                    console.log(json[0][fieldNames[i]]);
                     sessionStorage[fieldNames[i]] = json[0][fieldNames[i]];
                 }
 
@@ -62,7 +63,7 @@ function renderizarWindowTentativa(){
     newKpi2 = document.createElement('div');
     newKpi2.setAttribute('class', 'kpi');
     newKpi2.innerHTML = `<span id='kpiTitle'>Maior Pontuação</span>
-    <span id='kpiData'>${sessionStorage['pontosTentativa']}</span>`;
+    <span id='kpiData'>${String(sessionStorage['pontosTentativa']).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
         
     newKpi3 = document.createElement('div');
     newKpi3.setAttribute('class', 'kpi');

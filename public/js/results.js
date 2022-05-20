@@ -13,7 +13,7 @@ function results(){
 
     newResultado = document.createElement('div');
     newResultado.setAttribute('class', 'newResultado');
-    newResultado.innerHTML = `Pontos: ${pontos}`;
+    newResultado.innerHTML = `Pontos: ${String(pontos).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}`;
         
     newResultadoCanvas = document.createElement('Canvas');
     newResultadoCanvas.setAttribute('id', 'graficoResultado');

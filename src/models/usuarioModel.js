@@ -19,7 +19,7 @@ function saveTentativaModel(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros,
 }
 
 function rankingModel(){
-    return database.executar(`SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', qtdAcertos, (qtdAcertos+qtdErros) AS 'qtdTotal' FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50;`);
+    return database.executar(`SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros) FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50;`);
 }
 
 module.exports = {
