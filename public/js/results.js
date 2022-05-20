@@ -16,6 +16,7 @@ function results(){
         
     newResultadoCanvas = document.createElement('Canvas');
     newResultadoCanvas.setAttribute('id', 'graficoResultado');
+    newResultadoCanvas.setAttribute('style', 'height: 300px; width: 570px; padding: 24px');
         
     newResultadoNovaTentativa = document.createElement('button');
     newResultadoNovaTentativa.setAttribute('onclick', 'start()');
