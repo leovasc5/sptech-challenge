@@ -1,33 +1,62 @@
-fetch("/usuarios/history", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        ra: sessionStorage.ra
-    })
-}).then(function (resposta) {        
-    if (resposta.ok) {
-        resposta.json().then(json => {
-            if (!(JSON.stringify(json)=='[]')){
-                fieldNames = Object.keys(json[0]);
-        
-                for(let i = 0; i <= Object.keys(json[0]).length-1; i++){
-                    console.log(json[0][fieldNames[i]]);
-                    sessionStorage[fieldNames[i]] = json[0][fieldNames[i]];
-                }
+function getHistory(){
+    fetch("/usuarios/history", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ra: sessionStorage.ra
+        })
+    }).then(function (resposta) {        
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                if (!(JSON.stringify(json)=='[]')){
+                    fieldNames = Object.keys(json[0]);
+                
+                    for(let i = 0; i <= Object.keys(json[0]).length-1; i++){
+                        sessionStorage[fieldNames[i]] = json[0][fieldNames[i]];
+                    }
 
-               renderizarWindowTentativa();
-           }else{
-               renderizarWindowNovo();
-           }
-        });
-    }
-}).catch(function (erro) {
-    console.log(erro);
-});
+                   renderizarWindowTentativa();
+               }else{
+                   renderizarWindowNovo();
+               }
+            });
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    });
+}
 
-function renderizarWindowTentativa(){
+function getRankingPosition(){
+    var posicao = 0;
+
+    fetch("/usuarios/rankingPosition", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ra: sessionStorage.ra
+        })
+    }).then(function (resposta) {        
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json[0]['Posição'])
+                posicao = json[0]['Posição'];
+            });
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    });
+
+    return posicao;
+}
+
+getHistory();
+
+async function renderizarWindowTentativa(){
+    let posicaop = await getRankingPosition()
     newJanelaA = document.createElement('div');
     newJanelaA.setAttribute('class', 'newJanelaA');
                 
@@ -68,7 +97,7 @@ function renderizarWindowTentativa(){
     newKpi3 = document.createElement('div');
     newKpi3.setAttribute('class', 'kpi');
     newKpi3.innerHTML = `<span id='kpiTitle'>Posição Global</span>
-    <span id='kpiData'>Loading...</span>`;
+    <span id='kpiData'>${posicaop}</span>`;
                 
     janela.appendChild(newJanelaA);
     janela.appendChild(newJanelaB);

@@ -27,4 +27,8 @@ router.post("/ranking", function (req, res) {
     usuarioController.rankingController(req, res);
 });
 
+router.post("/rankingPosition", function (req, res) {
+    usuarioController.rankingPositionController(req, res);
+});
+
 module.exports = router;

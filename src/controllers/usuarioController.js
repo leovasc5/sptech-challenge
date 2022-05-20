@@ -147,6 +147,23 @@ function saveTentativaController(req, res) {
             );
     }
 
+    function rankingPositionController(req, res){
+        usuarioModel.rankingPositionModel(req.body.ra).then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao trazer o ranking! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+
 module.exports = {
     entrar,
     cadastrar,
@@ -154,5 +171,6 @@ module.exports = {
     testar,
     historyUser,
     saveTentativaController,
-    rankingController
+    rankingController,
+    rankingPositionController
 }
