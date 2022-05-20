@@ -21,9 +21,16 @@ function historyUser(ra){
     return database.executar(`SELECT * FROM tentativa WHERE fkRA = ${ra} ORDER BY pontosTentativa DESC LIMIT 1;`);
 }
 
+function saveTentativaModel(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
+    return database.executar(`INSERT INTO tentativa VALUE (
+        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
+    );`);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    historyUser
+    historyUser,
+    saveTentativaModel
 };
