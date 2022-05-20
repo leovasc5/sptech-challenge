@@ -84,6 +84,26 @@ function skipQuestion(element) {
             novaQuestao[n].style.display = "";
         }
     } catch {
+        pontos = pontos * (time/10);
+        fetch("/usuarios/saveTentativa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                pontosTentativa: pontos,
+                nmrTentativa: sessionStorage.nmrTentativa+1,
+                qtdAcertos: qtdAcertos,
+                qtdErros: qtdErros,
+                level1: lv1,
+                level2: lv2,
+                level3: lv3,
+                level4: lv4,
+                level5: lv5,
+                ra: sessionStorage.ra
+            })
+        });
+
         finishGame(1);
     }
 }

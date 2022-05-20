@@ -34,12 +34,12 @@ function results(){
     newResultadoNewKpi1 = document.createElement('div');
     newResultadoNewKpi1.setAttribute('class', 'kpi');
     newResultadoNewKpi1.innerHTML = `<span id='kpiTitle'>Pontos</span>
-    <span id='kpiData'>${pontos}</span>`;
+    <span id='kpiData'>${String(pontos).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
         
     newResultadoNewKpi2 = document.createElement('div');
     newResultadoNewKpi2.setAttribute('class', 'kpi');
     newResultadoNewKpi2.innerHTML = `<span id='kpiTitle'>Tempo Restante</span>
-    <span id='kpiData'>${'99:99'}</span>`;
+    <span id='kpiData'>${fmtMSS(time)}</span>`;
         
     newResultadoNewKpi3 = document.createElement('div');
     newResultadoNewKpi3.setAttribute('class', 'kpi');
@@ -85,7 +85,7 @@ function results(){
             scales: {
                 r: {
                     suggestedMin: 0,
-                    suggestedMax: 6
+                    suggestedMax: 5
                 }
             },
             plugins: {
