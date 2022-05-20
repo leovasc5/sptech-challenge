@@ -20,7 +20,6 @@ router.post("/history", function (req, res) {
 });
 
 router.post("/saveTentativa", function (req, res) {
-    console.log('Chegou na rota!')
     usuarioController.saveTentativaController(req, res);
 });
 
