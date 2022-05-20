@@ -1,5 +1,6 @@
 function results(){
     finishScreen.style.display = "none";
+    document.querySelector('.head').style.display = 'block';
 
     newResultA = document.createElement('div');
     newResultA.setAttribute('class', 'newResultA');
