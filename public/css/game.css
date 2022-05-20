@@ -23,8 +23,11 @@
 }
 
 #graficoResultado{
-    height: 100px;
     display: block;
+    box-sizing: border-box;
+    height: 300px;
+    width: 570px;
+    margin: auto;
 }
 
 .janelaAh2, .newResultado{
