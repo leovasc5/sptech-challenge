@@ -23,6 +23,8 @@ router.post("/saveTentativa", function (req, res) {
     usuarioController.saveTentativaController(req, res);
 });
 
-
+router.post("/ranking", function (req, res) {
+    usuarioController.rankingController(req, res);
+});
 
 module.exports = router;
