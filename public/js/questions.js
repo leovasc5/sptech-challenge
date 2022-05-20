@@ -1,11 +1,11 @@
 const materias = ["Arquitetura Computacional", "Algoritmos", "Pesquisa & Inovação", "Tecnologia da Informação", "Banco de Dados"];
 
 const professoresImg = [
-    "https://media-exp1.licdn.com/dms/image/C4E03AQFpgQ79r1rX2w/profile-displayphoto-shrink_200_200/0/1637588215532?e=1652918400&v=beta&t=_UpDEIMnbj62mf4dTBkldlP1ZZ24V12Q_1ZWnSorq28",
-    "https://media-exp1.licdn.com/dms/image/C4D03AQGMWoXbGWAxJw/profile-displayphoto-shrink_800_800/0/1637609695130?e=1658361600&v=beta&t=qJTkkEFyBPRAj8SqbXtTO3uajkNL9rYx46mA0GroWdg",
-    "https://media-exp1.licdn.com/dms/image/C4D03AQHhCT5LgZMxBw/profile-displayphoto-shrink_200_200/0/1637609543662?e=1652918400&v=beta&t=Y3ith_daqssxMvfpEVapsGXg-NwGRxPgKK680tOGw_I",
-    "https://media-exp1.licdn.com/dms/image/C4E03AQEN5ZaYGHcUxg/profile-displayphoto-shrink_200_200/0/1637947732402?e=1652918400&v=beta&t=SUBWBF01EXH_uoMjHBEUR-TGcGqI0dGqm7NEIN5446c",
-    "https://media-exp1.licdn.com/dms/image/C4D03AQFH1K7TlZNAUg/profile-displayphoto-shrink_400_400/0/1642515422039?e=1658361600&v=beta&t=vYLEjYzhUGquOMBG10vAHCQT7tBf-8WjE0XFfeu4MB8"
+    "../assets/imgs/marise.jfif",
+    "../assets/imgs/frizza.jfif",
+    "../assets/imgs/brandao.jfif",
+    "../assets/imgs/petry.jfif",
+    "../assets/imgs/celia.jfif"
 ];
 
 const professoresName = ['Marise', 'Freeza', 'Brandão', 'Petry', 'Célia'];
@@ -287,5 +287,5 @@ const q25 = {
 
 function getQuestions(){
     // return [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24, q25];
-    return [q1, q2, q3];
+    return [q1, q6, q11, q16, q21];
 }
