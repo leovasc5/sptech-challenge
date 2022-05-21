@@ -1,4 +1,6 @@
 function getHistory(){
+    var first = false;
+
     fetch("/usuarios/history", {
         method: "POST",
         headers: {
@@ -16,20 +18,17 @@ function getHistory(){
                     for(let i = 0; i <= Object.keys(json[0]).length-1; i++){
                         sessionStorage[fieldNames[i]] = json[0][fieldNames[i]];
                     }
-
-                   renderizarWindowTentativa();
+                //    renderizarWindowTentativa();
                }else{
-                   renderizarWindowNovo();
+                //    renderizarWindowNovo();
+                    first = true;
                }
+               console.log(first)
             });
         }
     }).catch(function (erro) {
         console.log(erro);
     });
-}
-
-function getRankingPosition(){
-    var posicao = 0;
 
     fetch("/usuarios/rankingPosition", {
         method: "POST",
@@ -42,21 +41,24 @@ function getRankingPosition(){
     }).then(function (resposta) {        
         if (resposta.ok) {
             resposta.json().then(json => {
-                console.log(json[0]['Posição'])
-                posicao = json[0]['Posição'];
+                sessionStorage.posicao = json[0]['Posição'];
             });
         }
     }).catch(function (erro) {
         console.log(erro);
     });
 
-    return posicao;
+    if(first){
+        renderizarWindowNovo();
+
+    }else{
+        renderizarWindowTentativa();
+    }
 }
 
 getHistory();
 
-async function renderizarWindowTentativa(){
-    let posicaop = await getRankingPosition()
+function renderizarWindowTentativa(){
     newJanelaA = document.createElement('div');
     newJanelaA.setAttribute('class', 'newJanelaA');
                 
@@ -73,8 +75,8 @@ async function renderizarWindowTentativa(){
     newJanelaAh2.setAttribute('class', 'janelaAh2');
     newJanelaAh2.innerHTML = "Melhor Tentativa";
         
-    newJanelaACanvas = document.createElement('Canvas');
-    newJanelaACanvas.setAttribute('id', 'graficoLinha');
+    newJanelaACanvas = document.createElement('canvas');
+    newJanelaACanvas.setAttribute('id', 'graficoTentativa');
         
     newJanelaBNovaTentativa = document.createElement('button');
     newJanelaBNovaTentativa.setAttribute('onclick', 'start()');
@@ -97,7 +99,7 @@ async function renderizarWindowTentativa(){
     newKpi3 = document.createElement('div');
     newKpi3.setAttribute('class', 'kpi');
     newKpi3.innerHTML = `<span id='kpiTitle'>Posição Global</span>
-    <span id='kpiData'>${posicaop}</span>`;
+    <span id='kpiData'>${sessionStorage.posicao}º</span>`;
                 
     janela.appendChild(newJanelaA);
     janela.appendChild(newJanelaB);
@@ -146,12 +148,15 @@ async function renderizarWindowTentativa(){
             },
             maintainAspectRatio: false
         }
-    };
-        
-    const grafico = new Chart(
-        document.getElementById('graficoLinha'),
-        config
-    );
+    }
+    
+    setTimeout(()=>{
+        const grafico = new Chart(
+            document.getElementById('graficoTentativa'),
+            config
+        );
+    }, 100)
+    
 }
             
 function renderizarWindowNovo(){
