@@ -1,30 +1,6 @@
 const { stringify } = require("nodemon/lib/utils");
 var usuarioModel = require("../models/usuarioModel");
 
-var sessoes = [];
-
-function testar(req, res) {
-    console.log("ENTRAMOS NA usuarioController");
-    res.json("ESTAMOS FUNCIONANDO!");
-}
-
-function listar(req, res) {
-    usuarioModel.listar()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
 function entrar(req, res) {
     var ra = req.body.raServer;
     var senha = req.body.senhaServer;
@@ -112,6 +88,7 @@ function historyUser(req, res) {
 }
 
 function saveTentativaController(req, res) {
+    console.log("Controler: " + req.body.nmrTentativa)
         usuarioModel.saveTentativaModel(req.body.pontosTentativa, req.body.nmrTentativa, 
             req.body.qtdAcertos, req.body.qtdErros, req.body.level1, req.body.level2, 
             req.body.level3, req.body.level4, req.body.level5, req.body.ra).then(
@@ -167,8 +144,6 @@ function saveTentativaController(req, res) {
 module.exports = {
     entrar,
     cadastrar,
-    listar,
-    testar,
     historyUser,
     saveTentativaController,
     rankingController,

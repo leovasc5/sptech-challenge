@@ -13,6 +13,9 @@ function historyUser(ra){
 }
 
 function saveTentativaModel(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
+    console.log(`INSERT INTO tentativa VALUE (
+        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
+    );`)
     return database.executar(`INSERT INTO tentativa VALUE (
         NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
     );`);

@@ -1,4 +1,4 @@
-async function getHistory(){
+function getHistory(){
     var pass = false;
 
     fetch("/usuarios/history", {

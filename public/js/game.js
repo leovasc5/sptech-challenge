@@ -41,7 +41,7 @@ function timedCount() {
             },
             body: JSON.stringify({
                 pontosTentativa: pontos,
-                nmrTentativa: sessionStorage.nmrTentativa+1,
+                nmrTentativa: Number(sessionStorage.qtdTentativas+1),
                 qtdAcertos: qtdAcertos,
                 qtdErros: qtdErros,
                 level1: lv1,
@@ -112,7 +112,7 @@ function skipQuestion(element) {
             },
             body: JSON.stringify({
                 pontosTentativa: pontos,
-                nmrTentativa: sessionStorage.nmrTentativa+1,
+                nmrTentativa: Number(sessionStorage.qtdTentativas+1),
                 qtdAcertos: qtdAcertos,
                 qtdErros: qtdErros,
                 level1: lv1,
