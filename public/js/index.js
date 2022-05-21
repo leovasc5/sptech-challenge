@@ -1,5 +1,5 @@
-function getHistory(){
-    var first = false;
+async function getHistory(){
+    var pass = false;
 
     fetch("/usuarios/history", {
         method: "POST",
@@ -13,17 +13,16 @@ function getHistory(){
         if (resposta.ok) {
             resposta.json().then(json => {
                 if (!(JSON.stringify(json)=='[]')){
+                    console.log('Caiu aqui')
                     fieldNames = Object.keys(json[0]);
                 
                     for(let i = 0; i <= Object.keys(json[0]).length-1; i++){
                         sessionStorage[fieldNames[i]] = json[0][fieldNames[i]];
+                        pass = true;
                     }
-                //    renderizarWindowTentativa();
-               }else{
-                //    renderizarWindowNovo();
-                    first = true;
-               }
-               console.log(first)
+                }else{
+                    return renderizarWindowNovo();
+                }
             });
         }
     }).catch(function (erro) {
@@ -42,18 +41,12 @@ function getHistory(){
         if (resposta.ok) {
             resposta.json().then(json => {
                 sessionStorage.posicao = json[0]['Posição'];
+                renderizarWindowTentativa();
             });
         }
     }).catch(function (erro) {
         console.log(erro);
     });
-
-    if(first){
-        renderizarWindowNovo();
-
-    }else{
-        renderizarWindowTentativa();
-    }
 }
 
 getHistory();
