@@ -113,7 +113,7 @@ function skipQuestion(element) {
             },
             body: JSON.stringify({
                 pontosTentativa: pontos,
-                nmrTentativa: Number(sessionStorage.qtdTentativas+1),
+                nmrTentativa: Number(sessionStorage.qtdTentativas),
                 qtdAcertos: qtdAcertos,
                 qtdErros: qtdErros,
                 level1: lv1,
