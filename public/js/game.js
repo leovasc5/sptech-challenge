@@ -105,6 +105,7 @@ function skipQuestion(element) {
         }
     } catch {
         pontos = pontos * (time/10);
+        sessionStorage.qtdTentativas++;
         fetch("/usuarios/saveTentativa", {
             method: "POST",
             headers: {

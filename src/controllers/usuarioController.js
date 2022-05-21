@@ -88,7 +88,6 @@ function historyUser(req, res) {
 }
 
 function saveTentativaController(req, res) {
-    console.log("Controler: " + req.body.nmrTentativa)
         usuarioModel.saveTentativaModel(req.body.pontosTentativa, req.body.nmrTentativa, 
             req.body.qtdAcertos, req.body.qtdErros, req.body.level1, req.body.level2, 
             req.body.level3, req.body.level4, req.body.level5, req.body.ra).then(

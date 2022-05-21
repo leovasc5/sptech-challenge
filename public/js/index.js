@@ -1,6 +1,4 @@
 function getHistory(){
-    var pass = false;
-
     fetch("/usuarios/history", {
         method: "POST",
         headers: {
@@ -13,7 +11,6 @@ function getHistory(){
         if (resposta.ok) {
             resposta.json().then(json => {
                 if (!(JSON.stringify(json)=='[]')){
-                    console.log('Caiu aqui')
                     fieldNames = Object.keys(json[0]);
                 
                     for(let i = 0; i <= Object.keys(json[0]).length-1; i++){

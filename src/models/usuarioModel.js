@@ -13,16 +13,16 @@ function historyUser(ra){
 }
 
 function saveTentativaModel(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
-    console.log(`INSERT INTO tentativa VALUE (
-        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
-    );`)
+    database.executar(`UPDATE aluno SET qtdTentativas = ${nmrTentativa} WHERE ra = ${ra};`);
     return database.executar(`INSERT INTO tentativa VALUE (
         NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
     );`);
 }
 
 function rankingModel(){
-    return database.executar(`SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros) FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50;`);
+    return database.executar(`
+    SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', 
+    qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros) FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50;`);
 }
 
 function rankingPositionModel(ra){
