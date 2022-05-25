@@ -37,8 +37,6 @@ function cadastrar(req, res) {
     var semestre = req.body.semestreServer;
     var idCurso = req.body.idCurso;
     
-    console.log(ra)    
-
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (ra == undefined) {
