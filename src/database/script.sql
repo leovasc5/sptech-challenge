@@ -22,7 +22,7 @@ CREATE TABLE materia(
 );
 
 CREATE TABLE aluno (
-    RA INT PRIMARY KEY,
+    RA CHAR(8) PRIMARY KEY,
     nomeAluno VARCHAR(256) NOT NULL,
     email VARCHAR(256) NOT NULL UNIQUE,
     senha VARCHAR(256) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE tentativa (
     lvl5 INT NOT NULL,
     dhRegistro DATETIME NOT NULL,
 
-    fkRA INT,
+    fkRA CHAR(8),
     FOREIGN KEY (fkRA) REFERENCES aluno (RA)
 );
 

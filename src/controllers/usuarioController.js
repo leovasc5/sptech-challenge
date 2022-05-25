@@ -1,5 +1,6 @@
 const { stringify } = require("nodemon/lib/utils");
 var usuarioModel = require("../models/usuarioModel");
+var md5 = require("crypto-js/md5");
 
 function entrar(req, res) {
     var ra = req.body.raServer;
@@ -33,7 +34,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var ra = req.body.raServer;
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var senha = md5(req.body.senhaServer);
     var curso = req.body.cursoServer;
     var semestre = req.body.semestreServer;
     
