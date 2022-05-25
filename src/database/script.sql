@@ -87,22 +87,22 @@ INSERT INTO materia VALUES
 (NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 2),
 (NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 3);
 
+INSERT INTO tentativa VALUE
+(NULL, 9457, 1, 24, 1, 5, 5, 5, 5, 4, NOW(), '02221051');
 
+INSERT INTO tentativaXmateria VALUES
+(4, 3, 9457),
+(4, 6, 9457),
+(4, 9, 9457),
+(4, 12, 9457),
+(4, 15, 9457);
 
-INSERT INTO aluno VALUES
-(2221009,'Gabriel Yuzoo', 'gabriel.yuzoo@sptech.school',    123456, 'Ciência da Computação', 1, 0),
-(2221025,'Vinicius da Silva Cardoso', 'vinicius.cardoso@sptech.school', 123456, 'Ciência da Computação', 1, 0),
-(2221051,'Leonardo Vasconcelos Paulino', 'leonardo.paulino@sptech.school', 123456, 'Ciência da Computação', 1, 4),
-(2221065,'Vitor Gonçalves', 'vitor.gonçalves@sptech.school',  123456, 'Ciência da Computação', 1, 0);
-
-INSERT INTO tentativa VALUES
-(1, 1500, 1, 24, 1, 5, 5, 5, 5, 4, 2221051),
-(2, 1340, 2, 22, 3, 4, 5, 5, 3, 5, 2221051),
-(4, 7150, NULL, 4, 1, 3, 1, 0, 0, 0, 2221025),
-(5, 8580, NULL, 5, 0, 4, 1, 0, 0, 0, 2221065),
-(6, 8445, NULL, 5, 0, 4, 1, 0, 0, 0, 2221009),
-(8, 1473, 3, 1, 4, 1, 0, 0, 0, 0, 2221051),
-(9, 8835, 4, 5, 0, 4, 1, 0, 0, 0, 2221051);
+-- (2, 1340, 2, 22, 3, 4, 5, 5, 3, 5, 2221051),
+-- (4, 7150, NULL, 4, 1, 3, 1, 0, 0, 0, 2221025),
+-- (5, 8580, NULL, 5, 0, 4, 1, 0, 0, 0, 2221065),
+-- (6, 8445, NULL, 5, 0, 4, 1, 0, 0, 0, 2221009),
+-- (8, 1473, 3, 1, 4, 1, 0, 0, 0, 0, 2221051),
+-- (9, 8835, 4, 5, 0, 4, 1, 0, 0, 0, 2221051);
 
 -- Para produção em Microsoft SQL Server na Azure ou AWS
 CREATE TABLE aluno (
