@@ -7,15 +7,15 @@ USE SPTechChallenge;
 
 CREATE TABLE curso (
     idCurso INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCurso VARCHAR(64) NOT NULL,
-    nomeProfessorCurso VARCHAR(64) NOT NULL,
-    fotoProfessorCurso VARCHAR(64) NOT NULL
+    nomeCurso VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE materia(
     idMateria INT PRIMARY KEY AUTO_INCREMENT,
     nomeMateria VARCHAR(64) NOT NULL,
     semestreMateria INT NOT NULL,
+    nomeProfessorCurso VARCHAR(64) NOT NULL,
+    fotoProfessorCurso VARCHAR(64) NOT NULL,
 
     fkCurso INT NOT NULL,
     FOREIGN KEY (fkCurso) REFERENCES curso (idCurso)
@@ -60,6 +60,34 @@ CREATE TABLE tentativaXmateria(
 
     pontos INT NOT NULL
 );
+
+INSERT INTO curso VALUES
+(NULL, 'Análise e Desenvolvimento de Sistemas'),
+(NULL, 'Ciência da Computação'),
+(NULL, 'Sistemas de Informação');
+
+INSERT INTO materia VALUES
+(NULL, 'Algoritmos', 1, 'Frizza', 'frizza.jfif', 1),
+(NULL, 'Algoritmos', 1, 'Frizza', 'frizza.jfif', 2),
+(NULL, 'Algoritmos', 1, 'Frizza', 'frizza.jfif', 3),
+
+(NULL, 'Arquitetura Computacional', 1, 'Marise', 'marise.jfif', 1),
+(NULL, 'Arquitetura Computacional', 1, 'Marise', 'marise.jfif', 2),
+(NULL, 'Arquitetura Computacional', 1, 'Marise', 'marise.jfif', 3),
+
+(NULL, 'Banco de Dados', 1, 'Célia', 'celia.jfif', 1),
+(NULL, 'Banco de Dados', 1, 'Célia', 'celia.jfif', 2),
+(NULL, 'Banco de Dados', 1, 'Célia', 'celia.jfif', 3),
+
+(NULL, 'Pesquisa & Inovação', 1, 'Brandão', 'brandao.jfif', 1),
+(NULL, 'Pesquisa & Inovação', 1, 'Brandão', 'brandao.jfif', 2),
+(NULL, 'Pesquisa & Inovação', 1, 'Brandão', 'brandao.jfif', 3),
+
+(NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 1),
+(NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 2),
+(NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 3);
+
+
 
 INSERT INTO aluno VALUES
 (2221009,'Gabriel Yuzoo', 'gabriel.yuzoo@sptech.school',    123456, 'Ciência da Computação', 1, 0),

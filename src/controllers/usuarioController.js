@@ -1,6 +1,5 @@
 const { stringify } = require("nodemon/lib/utils");
 var usuarioModel = require("../models/usuarioModel");
-var md5 = require("crypto-js/md5");
 
 function entrar(req, res) {
     var ra = req.body.raServer;
@@ -34,11 +33,11 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var ra = req.body.raServer;
     var email = req.body.emailServer;
-    var senha = md5(req.body.senhaServer);
-    var curso = req.body.cursoServer;
+    var senha = req.body.senhaServer;
     var semestre = req.body.semestreServer;
+    var idCurso = req.body.idCurso;
     
-    console.log('Chegou no controller')    
+    console.log(ra)    
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -48,12 +47,12 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (curso == undefined) {
+    } else if (idCurso == undefined) {
         res.status(400).send("Seu curso está undefined!");
     } else if (semestre == undefined) {
         res.status(400).send("Seu semestre está undefined!");
     } else {
-        usuarioModel.cadastrar(nome, ra, email, senha, curso, semestre)
+        usuarioModel.cadastrar(nome, ra, email, senha, semestre, idCurso)
             .then(
                 function (resultado) {
                     res.json(resultado);

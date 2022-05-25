@@ -107,13 +107,13 @@ var sizeWindowScreenB = '';
     function cadastrarIndex(){
         msgErro.innerHTML = '';
         var nome = nomeInp.value;
-        var ra = raInpCad.value
+        var ra = String(raInpCad.value);
         var email = emailInp.value;
         var senha = senhaInpCad.value;
-        var curso = cursoInp.value;
-        var semestre = semestreInp.value;
+        var semestre = Number(semestreInp.value);
+        var idCurso = Number(cursoInp.value);
 
-        if (nome == "" || ra == "" || email == "" || senha == "" || curso == "" || semestre == "") {
+        if (nome == "" || ra == "" || email == "" || senha == "" || idCurso == "" || semestre == "") {
             document.querySelector('.erroBox').style.display = 'block';
             msgErro.innerHTML += 'Todos os campos devem ser preenchidos!';
             sizeWindowScreenB = '756px';
@@ -132,15 +132,10 @@ var sizeWindowScreenB = '';
             return false;
         }
 
-        if(curso == '1'){
-            curso = 'Análise e Desenvolvimento de Sistemas';
-        }else if(curso == '2'){
-            curso = 'Ciência da Computação';
-        }else if(curso == '3'){
-            curso = 'Sistemas de Informação';
-        }else{
+        if(!((idCurso == 1) || (idCurso == 2) || (idCurso == 3))){
             document.querySelector('.erroBox').style.display = 'block';
             msgErro.innerHTML += 'O curso inserido é inválido!';
+            console.log(idCurso)
 
             sizeWindowScreenB = '756px';
             document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
@@ -148,20 +143,9 @@ var sizeWindowScreenB = '';
             return false;
         }
 
-        if(!((semestre != '1') || (semestre != '2') || (semestre != '3') || (semestre != '4') 
-            || (semestre != '5') || (semestre != '6') || (semestre != '7') || (semestre != '8'))){
+        if(!((semestre >= 1 || semestre <= 8) || ((idCurso == 1) && (semestre <= 4)))){
             document.querySelector('.erroBox').style.display = 'block';
             msgErro.innerHTML += 'O semestre inserido é inválido!';
-
-            sizeWindowScreenB = '756px';
-            document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
-
-            return false;
-        }
-
-        if((curso == 'Análise e Desenvolvimento de Sistemas') & (semestre != '1' || '2' || '3' || '4')){
-            document.querySelector('.erroBox').style.display = 'block';
-            msgErro.innerHTML += 'Semestre inválido para Análise e Desenvolvimento de Sistemas!';
 
             sizeWindowScreenB = '756px';
             document.querySelector('.windowScreenB').style.height = sizeWindowScreenB;
@@ -179,8 +163,8 @@ var sizeWindowScreenB = '';
                 raServer: ra,
                 emailServer: email,
                 senhaServer: senha,
-                cursoServer: curso,
-                semestreServer: semestre
+                semestreServer: semestre,
+                idCurso: idCurso
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);

@@ -1,12 +1,12 @@
 var database = require("../database/config")
 
 function entrar(ra, senha) {
-    return database.executar(`SELECT RA, nomeAluno, email, curso, semestre, qtdTentativas FROM aluno WHERE RA = ${ra} AND senha = '${senha}' LIMIT 1;`);
+    return database.executar(`SELECT RA, nomeAluno, email, curso, semestre, qtdTentativas FROM aluno WHERE RA = '${ra}' AND senha = MD5('${senha}') LIMIT 1;`);
 }
 
-function cadastrar(nome, ra, email, senha, curso, semestre) {
-    console.log(`INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);`)
-    return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, curso, semestre, qtdTentativas) VALUES (${ra}, '${nome}', '${email}', '${senha}', '${curso}', ${semestre}, 0);`);
+function cadastrar(nome, ra, email, senha, semestre, idCurso) {
+    console.log(`INSERT INTO aluno (RA, nomeAluno, email, senha, semestre, fkCurso) VALUES ('${ra}', '${nome}', '${email}', '${senha}', ${semestre}, ${idCurso});`)
+    return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, semestre, fkCurso) VALUES (${ra}, '${nome}', '${email}', MD5('${senha}'), ${semestre}, '${idCurso}');`);
 }
 
 function historyUser(ra){
