@@ -6,6 +6,31 @@ if(window.location.search.substr(1) == 'contaRegistrada'){
 
 sessionStorage.clear();
 
+raInp.focus();
+document.querySelector('#raInp').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        senhaInp.focus();
+    }
+});
+
+document.querySelector('#senhaInp').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        loginIndex();
+    }
+});
+
+document.querySelector('.headerLogin').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        raInp.focus();
+    }
+});
+
+document.querySelector('.headerCadastro').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        nomeInp.focus();
+    }
+});
+
 function changeCadastro(){
     document.querySelector('.contaRegistrada').style.display = 'none';
     loginForm.style.display = 'none';
@@ -79,7 +104,7 @@ function loginIndex(){
                 sessionStorage.ra = json.RA;
                 sessionStorage.nome = json.nomeAluno;
                 sessionStorage.email = json.email;
-                sessionStorage.curso = json.curso;
+                sessionStorage.idCurso = json.fkCurso;
                 sessionStorage.semestre = json.semestre;
                 sessionStorage.qtdTentativas = json.qtdTentativas;
             

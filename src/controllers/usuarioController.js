@@ -85,8 +85,26 @@ function historyUser(req, res) {
         );
 }
 
-function saveTentativaController(req, res) {
-        usuarioModel.saveTentativaModel(req.body.pontosTentativa, req.body.nmrTentativa, 
+function getMaterias(req, res) {
+    usuarioModel.getMaterias(req.body.idCurso, req.body.semestre)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.json([]);
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+function saveTentativa(req, res) {
+        usuarioModel.saveTentativa(req.body.pontosTentativa, req.body.nmrTentativa, 
             req.body.qtdAcertos, req.body.qtdErros, req.body.level1, req.body.level2, 
             req.body.level3, req.body.level4, req.body.level5, req.body.ra).then(
                 function (resultado) {
@@ -104,8 +122,8 @@ function saveTentativaController(req, res) {
             );
     }
 
-    function rankingController(req, res) {
-        usuarioModel.rankingModel().then(
+    function ranking(req, res) {
+        usuarioModel.ranking().then(
                 function (resultado) {
                     res.json(resultado);
                 }
@@ -121,8 +139,8 @@ function saveTentativaController(req, res) {
             );
     }
 
-    function rankingPositionController(req, res){
-        usuarioModel.rankingPositionModel(req.body.ra).then(
+    function rankingPosition(req, res){
+        usuarioModel.rankingPosition(req.body.ra).then(
             function (resultado) {
                 res.json(resultado);
             }
@@ -142,7 +160,8 @@ module.exports = {
     entrar,
     cadastrar,
     historyUser,
-    saveTentativaController,
-    rankingController,
-    rankingPositionController
+    getMaterias,
+    saveTentativa,
+    ranking,
+    rankingPosition
 }

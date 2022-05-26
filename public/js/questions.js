@@ -1,14 +1,30 @@
-const materias = ["Arquitetura Computacional", "Algoritmos", "Pesquisa & Inovação", "Tecnologia da Informação", "Banco de Dados"];
+var materias = []
+var professoresImg = [];
+var professoresName = [];
 
-const professoresImg = [
-    "../assets/imgs/marise.jfif",
-    "../assets/imgs/frizza.jfif",
-    "../assets/imgs/brandao.jfif",
-    "../assets/imgs/petry.jfif",
-    "../assets/imgs/celia.jfif"
-];
-
-const professoresName = ['Marise', 'Freeza', 'Brandão', 'Petry', 'Célia'];
+fetch("/usuarios/getMaterias", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        idCurso: Number(sessionStorage.idCurso),
+        semestre: Number(sessionStorage.semestre)
+    })
+}).then(function (resposta) {        
+    if (resposta.ok) {
+        resposta.json().then(json => {
+            console.log(json)
+            for(i = 0; i < json.length; i++){
+                materias.push(json[i].nomeMateria);
+                professoresName.push(json[i].nomeProfessorCurso)
+                professoresImg.push('../assets/img/'+json[i].fotoProfessorCurso);
+            }
+        })
+    }
+}).catch(function (erro) {
+    console.log(erro);
+})
 
 const q1 = {
     id: 1,

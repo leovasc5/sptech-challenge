@@ -12,20 +12,24 @@ function historyUser(ra){
     return database.executar(`SELECT * FROM tentativa WHERE fkRA = ${ra} ORDER BY pontosTentativa DESC LIMIT 1;`);
 }
 
-function saveTentativaModel(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
+function getMaterias(idCurso, semestre){
+    return database.executar(`SELECT * FROM materia WHERE semestreMateria = ${semestre} AND fkCurso = ${idCurso} ORDER BY nomeMateria ASC;`);
+}
+
+function saveTentativa(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
     database.executar(`UPDATE aluno SET qtdTentativas = ${nmrTentativa} WHERE ra = ${ra};`);
     return database.executar(`INSERT INTO tentativa VALUE (
         NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
     );`);
 }
 
-function rankingModel(){
+function ranking(){
     return database.executar(`
     SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', 
     qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros) FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50;`);
 }
 
-function rankingPositionModel(ra){
+function rankingPosition(ra){
     return database.executar(`SELECT Posição FROM (SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros), fkRA FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50) AS tabela WHERE fkRA = ${ra};`)
 }
 
@@ -33,7 +37,8 @@ module.exports = {
     entrar,
     cadastrar,
     historyUser,
-    saveTentativaModel,
-    rankingModel,
-    rankingPositionModel
+    getMaterias,
+    saveTentativa,
+    ranking,
+    rankingPosition
 };

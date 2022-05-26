@@ -22,6 +22,10 @@
     width: 90%;
 }
 
+.newJanelaBContainer{
+    margin-top: 24px;
+}
+
 #graficoResultado{
     display: block;
     box-sizing: border-box;
@@ -74,23 +78,27 @@ canvas{
 }
 
 .startButton, .exitButton{
+    width: 50%;
     padding: 16px;
     margin: 32px;
     font-size: 24px;
     border-radius: 12px;
     border: none;
-    background-color: #00b400;
+    background-color: #009900;
     color: #fff;
     cursor: pointer;
 }
 
 .exitButton{
-    background-color: #ff0000;;
+    background-color: #b20000;
+}
+
+.exitButton:hover{
+    background-color: #ff0000;
 }
 
 .startButton:hover{
-    background-color: #badaaf;
-    color: #000;
+    background-color: #007f00;
 }
 
 .startGame{
