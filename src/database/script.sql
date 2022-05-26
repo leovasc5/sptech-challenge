@@ -88,14 +88,14 @@ INSERT INTO materia VALUES
 (NULL, 'Tecnologia da Informação', 1, 'Petry', 'petry.jfif', 3);
 
 INSERT INTO tentativa VALUE
-(NULL, 9457, 1, 24, 1, 5, 5, 5, 5, 4, NOW(), '02221051');
+(NULL, 9457, 1, 24, 1, 5, 5, 5, 5, 4, NOW(), '02221000');
 
 INSERT INTO tentativaXmateria VALUES
-(4, 3, 9457),
-(4, 6, 9457),
-(4, 9, 9457),
-(4, 12, 9457),
-(4, 15, 9457);
+(1, 3, 9457),
+(1, 6, 9457),
+(1, 9, 9457),
+(1, 12, 9457),
+(1, 15, 9457);
 
 -- (2, 1340, 2, 22, 3, 4, 5, 5, 3, 5, 2221051),
 -- (4, 7150, NULL, 4, 1, 3, 1, 0, 0, 0, 2221025),

@@ -73,7 +73,7 @@ canvas{
     font-weight: bold;
 }
 
-.startButton{
+.startButton, .exitButton{
     padding: 16px;
     margin: 32px;
     font-size: 24px;
@@ -82,6 +82,10 @@ canvas{
     background-color: #00b400;
     color: #fff;
     cursor: pointer;
+}
+
+.exitButton{
+    background-color: #ff0000;;
 }
 
 .startButton:hover{

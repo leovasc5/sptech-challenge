@@ -84,12 +84,20 @@ function renderizarWindowTentativa(){
     newKpi2 = document.createElement('div');
     newKpi2.setAttribute('class', 'kpi');
     newKpi2.innerHTML = `<span id='kpiTitle'>Maior Pontuação</span>
-    <span id='kpiData'>${String(sessionStorage['pontosTentativa']).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
+    <span id='kpiData'>${String(sessionStorage.pontosTentativa).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
         
     newKpi3 = document.createElement('div');
     newKpi3.setAttribute('class', 'kpi');
     newKpi3.innerHTML = `<span id='kpiTitle'>Posição Global</span>
     <span id='kpiData'>${sessionStorage.posicao}º</span>`;
+
+    newJanelaBContainerSaida = document.createElement('div');
+    newJanelaBContainerSaida.setAttribute('class', 'newJanelaBContainer');
+
+    newJanelaBSaida = document.createElement('button');
+    newJanelaBSaida.setAttribute("onclick", "window.location.href = '../'");
+    newJanelaBSaida.setAttribute('class', 'exitButton');
+    newJanelaBSaida.textContent = 'Sair';
                 
     janela.appendChild(newJanelaA);
     janela.appendChild(newJanelaB);
@@ -99,7 +107,9 @@ function renderizarWindowTentativa(){
     newJanelaB.appendChild(newJanelaBContainer);
     newJanelaBContainer.appendChild(newJanelaBNovaTentativa);
     newJanelaB.appendChild(newKpis);
-        
+    newJanelaB.appendChild(newJanelaBContainerSaida);
+    newJanelaBContainerSaida.appendChild(newJanelaBSaida);
+
     newJanelaAContainer.appendChild(newJanelaACanvas);
     newKpis.appendChild(newKpi1);
     newKpis.appendChild(newKpi2);

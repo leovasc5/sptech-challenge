@@ -109,7 +109,7 @@ function loginIndex(){
 function cadastrarIndex(){
     msgErro.innerHTML = '';
     var nome = nomeInp.value;
-    var ra = String(raInpCad.value);
+    var ra = raInpCad.value;
     var email = emailInp.value;
     var senha = senhaInpCad.value;
     var semestre = Number(semestreInp.value);

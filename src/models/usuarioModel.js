@@ -5,7 +5,7 @@ function entrar(ra, senha) {
 }
 
 function cadastrar(nome, ra, email, senha, semestre, idCurso) {
-    return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, semestre, fkCurso) VALUES (${ra}, '${nome}', '${email}', MD5('${senha}'), ${semestre}, '${idCurso}');`);
+    return database.executar(`INSERT INTO aluno (RA, nomeAluno, email, senha, semestre, fkCurso) VALUES ('${ra}', '${nome}', '${email}', MD5('${senha}'), ${semestre}, '${idCurso}');`);
 }
 
 function historyUser(ra){
