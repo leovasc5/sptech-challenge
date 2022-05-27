@@ -3,8 +3,7 @@ resp = ["1010", "Binárias, Octais, Decimais e Hexadecimais", "33", "#define", "
 options = [["1011", "10", "11", "0110"], ["Binárias, Octais e Hexadecimais", "Binárias e Octais", "Binárias e Decimais", "Binárias, Decimais e Hexadecimais"], ["39", "65", "35", "129"], ["#include", "DHTLUPIN", "SerialPrint"], ["75", "154", "38", "127"], ["id", "css", "script", "onclick"], ["style", "<p>", "id", "color"], ["Dispara uma código em HTML para interagir com o usuário", "Dispara um alert vazio"], ["var frase = '${primeira_parte}, Mundo!'", "var frase = 'primeira_parte Mundo!'", "var frase = ${`primeira_parte , Mundo!`}", "var frase = 'Olá,' + 'Mundo!'"], ["Nada pois o escopo local criará a variável novamente", "Não acontece nada, escopos não interferem nesses casos", "Não é possível criar variáveis globais"], ["É um sistema para salvar o código em vários computadores", "É um sistema para criar equipes e programar simultaneamente"], ["Mostra apenas os arquivos não adicionados ao Git", "Mostra apenas os arquivos adicionados ao Git", "Mostra se o repositório está online ou não"], ["Deleta o user.name do git", "Gera um erro pois o comando não existe."], ["Insere o primeiro arquivo não adicionado em ordem alfabética ao Git", "Adiciona o arquivo mais recente não adicionado ao Git"], ["Atualiza o repositório remoto e local", "Inicia um novo repositório"], ["Escopo determina e documenta quais são as necessidades imutáveis do projeto", "Escopo determina e documenta quais são os limites que não comprometam o desempenho e desenvolvimento do projeto"], ["Backlog é a teoria que define como deve ser organizado um projeto de TI", "Backlog é a 'lista' de bugs e problemas encontrados no projeto"], ["Premissas determinam e documentam os objetivos específicos de cada projeto, como suas entregas, tarefas, custos e prazos", "Premissas determinam e documentam quais são os limites que não comprometam o desempenho e desenvolvimento do projeto"], ["Restrições determinam e documentam os objetivos específicos de cada projeto, como suas entregas, tarefas, custos e prazos", "Restrições determinam e documentam quais são as necessidades imutáveis do projeto"], ["Uma jogada tática do futebol", "Um paradigma de programação"], ["Uma linguagem de programação para sistemas operacionais", "Um sistema gerenciador de banco de dados"], ["SELECT executa uma atualização aos registros no banco de dados", "SELECT executa uma inserção no banco de dados"], ["Os dados de todos os alunos menores que 18 anos", "A idade de todos alunos menores que 18 anos"], ["Para clonar duas tabelas para que tenham os mesmos dados", "Para inserir dados duplicados de tabelas diferentes"], ["A adição de um campo de texto 'email' que pode ser nulo", "A adição de emails aleatórios em todos os registros da tabela Alunos"]]
 var questions = {};
 
-function createQuestions(){
-return fetch("/usuarios/getMaterias", {
+fetch("/usuarios/getMaterias", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -16,30 +15,36 @@ return fetch("/usuarios/getMaterias", {
 }).then(function (resposta) {        
     if (resposta.ok) {
         resposta.json().then(json => {
-            runNumber = 1;
-            var positions = [];
+            runNumber = 0;
+            teacherName = teacherImg = materias = positions = [];
 
             for(i = 0; i < 25; i++){
-                if((i == 0) || (i == 5) || (i == 10) || (i == 15) || (i == 20)){
-                    runNumber = 1;
+                if((i == 5) || (i == 10) || (i == 15) || (i == 20)){
+                    runNumber = 0;
                 }
+
+                materias.push(json[runNumber].nomeMateria);
+                teacherImg.push('../../assets/img/'+json[runNumber].fotoProfessorCurso);
+                teacherName.push(json[runNumber].nomeProfessorCurso);
 
                 positions.push(runNumber);
                 runNumber++;
             }
-
             
             for(i = 0; i < 25; i++){
                 questions[i] = {};
                 questions[i].id = i;
-                questions[i].mat = json[i].nomeMateria;
-                questions[i].teacherImg = '../../assets/img/'+json[i].fotoProfessorCurso;
-                questions[i].teacherName = json[i].nomeProfessorCurso;
+                questions[i].mat = materias[i];
+                questions[i].teacherImg = teacherImg[i];
+                questions[i].teacherName = teacherName[i];
                 questions[i].desc = desc[i];
                 questions[i].resp = resp[i];
                 questions[i].options = options[i];
                 questions[i].level = positions[i];
+
             }
+
+            console.log(questions)
         })
     }
 }).catch(function (erro) {
@@ -48,5 +53,5 @@ return fetch("/usuarios/getMaterias", {
 
 function getQuestions(){
     // return [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24, q25];
-    // return [questions[0], questions[5], questions[0], questions[0], questions[]];
+    return [questions[0], questions[5], questions[10], questions[15], questions[20]];
 }
