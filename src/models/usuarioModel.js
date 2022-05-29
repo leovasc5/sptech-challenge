@@ -17,10 +17,11 @@ function getMaterias(idCurso, semestre){
 }
 
 function saveTentativa(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, level1, level2, level3, level4, level5, ra){
-    database.executar(`UPDATE aluno SET qtdTentativas = ${nmrTentativa} WHERE ra = ${ra};`);
+    console.log(`INSERT INTO tentativa VALUE (
+        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, NOW(), ${ra}
+    );`)
     return database.executar(`INSERT INTO tentativa VALUE (
-        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, ${ra}
-    );`);
+        NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, NOW(), '${ra}');`);
 }
 
 function ranking(){
