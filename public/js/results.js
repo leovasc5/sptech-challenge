@@ -95,7 +95,7 @@ function results(){
                 }
             },
             maintainAspectRatio: false,
-            responsive: false
+            responsive: false,
         }
     };
         

@@ -104,7 +104,7 @@ function skipQuestion(element) {
             novaQuestao[n].style.display = "";
         }
     } catch {
-        pontos = pontos * (time/10);
+        pontos = pontos * (time/60);
         sessionStorage.qtdTentativas++;
         fetch("/usuarios/saveTentativa", {
             method: "POST",
