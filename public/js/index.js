@@ -126,7 +126,7 @@ function renderizarWindowTentativa(){
               borderColor: "rgba(31, 43, 69,1)",
               pointBorderColor: "#fff",
               pointBackgroundColor: "transparent",
-              data: [sessionStorage.level1, sessionStorage.level2, sessionStorage.level3, sessionStorage.level4, sessionStorage.level5]
+              data: [sessionStorage.lvl1, sessionStorage.lvl2, sessionStorage.lvl3, sessionStorage.lvl4, sessionStorage.lvl5]
             }
         ]
     };
