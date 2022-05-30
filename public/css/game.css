@@ -6,7 +6,7 @@
 
 .janelaNova{
     position: absolute;
-    left: 53%;
+    left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -89,6 +89,10 @@ canvas{
     cursor: pointer;
 }
 
+.back{
+    background-color: #e56737;
+}
+
 .exitButton{
     background-color: #b20000;
 }
@@ -103,6 +107,10 @@ canvas{
 
 .startGame{
     padding: 64px;
+}
+
+.back:hover{
+    background-color: #FA5000;
 }
 
 .characterConfirm{
@@ -183,6 +191,24 @@ canvas{
     background-color: #3c4864;
     border-radius: 48px;
     transition: all 0.1s ease-in;
+}
+
+.aviso{
+    background-color: #1F2B45;
+    color: #fff;
+    font-size: 30px;
+    padding: 24px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.aviso button{
+    background-color: #b20000;
+}
+
+.aviso button:hover{
+    background-color: #ff0000;
 }
 
 #separator p{

@@ -46,7 +46,30 @@ function getHistory(){
     });
 }
 
-getHistory();
+if(sessionStorage.semestre == 1){
+    getHistory();
+}else{
+    renderizarWait();
+}
+
+function renderizarWait(){
+    aviso = document.createElement('div');
+    aviso.setAttribute('class', 'aviso');
+
+    avisoSpan = document.createElement('span');
+    avisoSpan.innerHTML = 'Infelizmente o SPTech Challenge ainda não está disponível para a sua turma :('
+
+    avisoBtn = document.createElement('button');
+    avisoBtn.setAttribute("onclick", "window.location = '../'");
+    avisoBtn.setAttribute('class', 'startButton');
+    avisoBtn.textContent = 'Sair';
+
+    aviso.appendChild(avisoSpan);
+    aviso.appendChild(avisoBtn);
+    janela.setAttribute('class', 'janelaNova');
+    janela.appendChild(aviso);
+
+}
 
 function renderizarWindowTentativa(){
     newJanelaA = document.createElement('div');

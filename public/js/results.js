@@ -26,7 +26,7 @@ function results(){
 
     newResultadoTelaInicial = document.createElement('button');
     newResultadoTelaInicial.setAttribute('onclick', 'location.reload()');
-    newResultadoTelaInicial.setAttribute('class', 'startButton');
+    newResultadoTelaInicial.setAttribute('class', 'startButton back');
     newResultadoTelaInicial.textContent = 'Tela Inicial';
         
     newResultadoNewKpis = document.createElement('div');
