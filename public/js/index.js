@@ -37,7 +37,8 @@ function getHistory(){
     }).then(function (resposta) {        
         if (resposta.ok) {
             resposta.json().then(json => {
-                sessionStorage.posicao = json[0]['Posição'];
+                console.log(json)
+                sessionStorage.posicao = json;
                 renderizarWindowTentativa();
             });
         }

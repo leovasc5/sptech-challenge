@@ -142,7 +142,7 @@ function saveTentativa(req, res) {
     function rankingPosition(req, res){
         usuarioModel.rankingPosition(req.body.ra).then(
             function (resultado) {
-                res.json(resultado);
+                res.json(resultado[0].posicao)
             }
         ).catch(
             function (erro) {

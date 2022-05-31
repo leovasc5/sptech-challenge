@@ -32,11 +32,17 @@ function ranking(){
         pontosTentativa AS 'Pontos', qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros), RA
         FROM tentativa JOIN aluno ON fkRA = RA ORDER BY pontosTentativa DESC
     ) AS dataset GROUP BY dataset.RA LIMIT 50;`);
-}
+};
 
 function rankingPosition(ra){
-    return database.executar(`SELECT Posição FROM (SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'Posição', nomeAluno AS 'Aluno', pontosTentativa AS 'Pontos', qtdAcertos AS 'Acertos', (qtdAcertos+qtdErros), fkRA FROM tentativa JOIN aluno ON fkRA = RA GROUP BY nomeAluno LIMIT 50) AS tabela WHERE fkRA = ${ra};`)
-}
+    return database.executar(`
+        SELECT posicao FROM (
+        SELECT RANK() OVER(ORDER BY pontosTentativa DESC) AS 'posicao', RA
+        FROM tentativa JOIN aluno ON fkRA = RA ORDER BY pontosTentativa DESC
+    ) AS dataset WHERE dataset.RA = '${ra}' GROUP BY dataset.RA;`);
+};
+
+
 
 module.exports = {
     entrar,
