@@ -20,7 +20,7 @@ function results(){
     newResultadoCanvas.setAttribute('style', 'height: 300px; width: 570px; padding: 24px');
         
     newResultadoNovaTentativa = document.createElement('button');
-    newResultadoNovaTentativa.setAttribute('onclick', 'start()');
+    newResultadoNovaTentativa.setAttribute('onclick', 'restart()');
     newResultadoNovaTentativa.setAttribute('class', 'startButton');
     newResultadoNovaTentativa.textContent = 'Iniciar Nova Tentativa';
 
