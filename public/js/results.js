@@ -13,7 +13,7 @@ function results(){
 
     newResultado = document.createElement('div');
     newResultado.setAttribute('class', 'newResultado');
-    newResultado.innerHTML = `Pontos: ${String(pontos).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}`;
+    newResultado.innerHTML = `Pontos: ${(pontos.toFixed(0)).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}`;
         
     newResultadoCanvas = document.createElement('Canvas');
     newResultadoCanvas.setAttribute('id', 'graficoResultado');
@@ -35,7 +35,7 @@ function results(){
     newResultadoNewKpi1 = document.createElement('div');
     newResultadoNewKpi1.setAttribute('class', 'kpi');
     newResultadoNewKpi1.innerHTML = `<span id='kpiTitle'>Pontos</span>
-    <span id='kpiData'>${String(pontos).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
+    <span id='kpiData'>${String(pontos.toFixed(0)).replace(/\d(?=(?:\d{3})+$)/g, '$&.')}</span>`;
         
     newResultadoNewKpi2 = document.createElement('div');
     newResultadoNewKpi2.setAttribute('class', 'kpi');
