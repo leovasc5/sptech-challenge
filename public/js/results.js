@@ -20,12 +20,12 @@ function results(){
     newResultadoCanvas.setAttribute('style', 'height: 300px; width: 570px; padding: 24px');
         
     newResultadoNovaTentativa = document.createElement('button');
-    newResultadoNovaTentativa.setAttribute('onclick', 'restart()');
+    newResultadoNovaTentativa.setAttribute('onclick', "window.location.href = window.location.href+'?restart';");
     newResultadoNovaTentativa.setAttribute('class', 'startButton');
     newResultadoNovaTentativa.textContent = 'Iniciar Nova Tentativa';
 
     newResultadoTelaInicial = document.createElement('button');
-    newResultadoTelaInicial.setAttribute('onclick', 'location.reload()');
+    newResultadoTelaInicial.setAttribute('onclick', "window.location.href = location.origin+location.pathname;");
     newResultadoTelaInicial.setAttribute('class', 'startButton back');
     newResultadoTelaInicial.textContent = 'Tela Inicial';
         
