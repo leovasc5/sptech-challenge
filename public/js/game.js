@@ -20,29 +20,6 @@ function finishGame(status) {
     finishScreen.appendChild(newButtonFinish);
 }
 
-function restart(){
-    time = 600;
-    timerOn = true;
-    pontos = 0;
-    questions = shuffleQuestions(getQuestions());
-    questoesAntigas = [];
-    lv1 = lv2 = lv3 = lv4 = lv5 = qtdAcertos = qtdErros = pontos = 0;
-
-    document.querySelector('#separator').remove();
-    separator = document.createElement('div').setAttribute('id', 'separator');
-    separatorFather.appendChild(separator)
-    characterBox.remove();
-    answerButtons.remove();
-    continueButton.remove();
-    // remove separator, characterBox, answerButtons, continueButton
-    // create separator, characterBox, answerButtons, continueButton
-    // id points = 0
-
-
-
-    start();
-}
-
 var timerOn = true;
 var time = 600;
 
@@ -250,6 +227,10 @@ function question() {
         }
         continueButton.appendChild(newButtonContinue);
     }
+}
+
+if(window.location.href.slice(window.location.href.length-7) == 'restart'){
+    start();
 }
 
 function start() {

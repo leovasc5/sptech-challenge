@@ -108,7 +108,9 @@ function loginIndex(){
                 sessionStorage.semestre = json.semestre;
                 sessionStorage.qtdTentativas = json.qtdTentativas;
             
-                window.location = "./game/";
+                setTimeout(()=>{
+                    window.location = "./game/";
+                }, 1000)
             });
         
         } else {
