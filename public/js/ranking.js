@@ -18,14 +18,15 @@ function getRanking(){
                         }
                     }
 
-                    console.log(json)
                     for(let j = 0; j < json.length; j++){
                         newTr = document.createElement('tr');
                         newTd = [];
-                        for(let i = 0; i < Object.keys(json[j]).length; i++){
+
+                        for(var i = 0; i < Object.keys(json[j]).length; i++){
                             newTd[i] = document.createElement('td');
+
                             if(i == 0){
-                                newTd[i].textContent = json[j][fieldNames[i]] + 'º';
+                                newTd[i].textContent =  (j+1) + 'º';
                             }else if(i == 1){
                                 newTd[i].textContent = json[j][fieldNames[i]];
                             }else if(i == 2){
