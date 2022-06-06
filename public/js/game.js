@@ -33,7 +33,7 @@ function timedCount() {
         timer.innerHTML = "TEMPO<br>ESGOTADO"
         timeOutAudio.play();
 
-        pontos = pontos * (time/10);
+        pontos = pontos * (time/120);
         fetch("/usuarios/saveTentativa", {
             method: "POST",
             headers: {
@@ -104,7 +104,7 @@ function skipQuestion(element) {
             novaQuestao[n].style.display = "";
         }
     } catch {
-        pontos = pontos * (time/60);
+        pontos = pontos * (time/120);
         sessionStorage.qtdTentativas++;
         fetch("/usuarios/saveTentativa", {
             method: "POST",

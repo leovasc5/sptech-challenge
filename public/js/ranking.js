@@ -18,6 +18,7 @@ function getRanking(){
                         }
                     }
 
+                    console.log(json)
                     for(let j = 0; j < json.length; j++){
                         newTr = document.createElement('tr');
                         newTd = [];
@@ -34,9 +35,6 @@ function getRanking(){
                             }else if(i == 4){
                                 continue;
                             }
-                            // else{
-                                // newTd[i].textContent = json[j][fieldNames[i]];
-                            // }
                             
                             if(i != (Object.keys(json[j]).length)-1){
                                 newTr.appendChild(newTd[i]);
@@ -45,9 +43,6 @@ function getRanking(){
 
                         rankingTable.appendChild(newTr);
                     }
-               }else{
-                //    renderizarWindowNovo();
-                // Mensagem de Erro
                }
             });
         }

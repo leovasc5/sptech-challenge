@@ -24,7 +24,6 @@ function saveTentativa(pontosTentativa, nmrTentativa, qtdAcertos, qtdErros, leve
         NULL, ${pontosTentativa}, ${nmrTentativa}, ${qtdAcertos}, ${qtdErros}, ${level1}, ${level2}, ${level3}, ${level4}, ${level5}, NOW(), '${ra}');`);
 }
 
-
 function ranking(){
     return database.executar(`
     SELECT * FROM (
