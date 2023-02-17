@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/70069239/168457986-6f46a84f-eceb-4b67-b99c-f33cca49a36a.png" height="10%">
   <p align="center">
-  ㅤㅤㅤO  projeto  tem  sido  desenvolvido com o objetivo de unificar e organizar todos os conteúdos ministrados nas matérias do 1º semestre de Ciência da Computação, 
+  ㅤㅤㅤO  projeto  foi desenvolvido com o objetivo de unificar e organizar todos os conteúdos ministrados nas matérias do 1º semestre de Ciência da Computação, 
     Sistemas de Informação e Análise e Desenvolvimento de Sistemas da São Paulo Tech School para que os alunos possam ter 
     uma maneira fácil e interativa de testar seus conhecimentos.
   </p>
@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td>MySQL</td>
-    <td>8.0 ou > ('Verificar versão em config.js)<td>
+    <td>8.0 ou ></td>
   </tr>
 </table>
 <br>
